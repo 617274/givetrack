@@ -1,4 +1,4 @@
-﻿# Giftab
+﻿# Givetrack
 
 **An app that visualizes a history of giving.**
 
