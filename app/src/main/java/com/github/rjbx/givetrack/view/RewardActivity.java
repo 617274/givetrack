@@ -19,7 +19,7 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
-import com.android.billingclient.api.BillingClient;
+// import com.android.billingclient.api.BillingClient;
 import com.github.rjbx.givetrack.AppUtilities;
 import com.github.rjbx.givetrack.R;
 import com.github.rjbx.givetrack.data.DatabaseContract;
@@ -61,8 +61,9 @@ public class RewardActivity extends AppCompatActivity implements
     @BindView(R.id.credit_toggle) View mCreditToggle;
 
     /**
-     * Initializes the {@link RewardedVideoAd} and {@link BillingClient}.
+     * Initializes the {@link RewardedVideoAd}.
      */
+     // and should initialize {@link BillingClient}.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
