@@ -30,7 +30,7 @@ import com.github.rjbx.givetrack.data.entry.Target;
 import com.github.rjbx.givetrack.data.entry.User;
 import com.google.android.gms.wallet.*;
 import com.google.android.gms.common.api.*;
-import com.stripe.android.model.Token;
+//import com.stripe.android.model.Token;
 
 import java.util.Arrays;
 import java.util.zip.DataFormatException;
@@ -131,10 +131,10 @@ public class RemitActivity extends AppCompatActivity implements LoaderManager.Lo
                         if (paymentMethodToken == null) throw new DataFormatException();
                         String rawToken = paymentMethodToken.getToken();
 
-                        Token stripeToken = Token.fromString(rawToken);
-                        if (stripeToken != null) {
-                            chargeToken(stripeToken.getId());
-                        }
+//                        Token stripeToken = Token.fromString(rawToken);
+//                        if (stripeToken != null) {
+//                            chargeToken(stripeToken.getId());
+//                        }
                         break;
 
                     case RESULT_CANCELED:
