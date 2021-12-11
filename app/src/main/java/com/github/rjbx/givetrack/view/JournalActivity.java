@@ -608,7 +608,7 @@ public class JournalActivity extends AppCompatActivity implements
                 long time = values.getTime();
                 double impact = values.getImpact();
 
-                String textMessage = String.format("My donation on %s totaling %s to #%s have been added to my personal record with #%s App!",
+                String textMessage = String.format("On #s, I donated a total of %s to #%s! #%s App",
                         DATE_FORMATTER.format(new Date(time)), CURRENCY_FORMATTER.format(impact), name, getString(R.string.app_name));
                 ViewUtilities.launchShareIntent(JournalActivity.this, textMessage);
             }

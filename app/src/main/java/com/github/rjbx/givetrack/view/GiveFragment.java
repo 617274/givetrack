@@ -770,7 +770,7 @@ public class GiveFragment extends Fragment implements
                 double impact = values.getImpact();
 
                 String textMessage =
-                        String.format("My %s donations totaling %s to #%s have been added to my personal record with #%s App!",
+                        String.format("I donated %s times for a total of %s to #%s! #%s App",
                                 frequency, CURRENCY_FORMATTER.format(impact), name, getString(R.string.app_name));
                 ViewUtilities.launchShareIntent(mParentActivity, textMessage);
             }
