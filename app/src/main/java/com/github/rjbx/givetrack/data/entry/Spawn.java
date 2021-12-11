@@ -154,7 +154,7 @@ public class Spawn implements Company, Parcelable, Cloneable {
     @Override public void setName(String name) { this.name = name; }
     @Override public String getLocationStreet() { return locationStreet; }
     @Override public void setLocationStreet(String locationStreet) { this.locationStreet = locationStreet; }
-    @Override public String getLocationDetail() { return !locationDetail.equals("null") ? locationDetail : ""; }
+    @Override public String getLocationDetail() { return locationDetail; }
     @Override public void setLocationDetail(String locationDetail) { this.locationDetail = locationDetail; }
     @Override public String getLocationCity() { return locationCity; }
     @Override public void setLocationCity(String locationCity) { this.locationCity = locationCity; }
