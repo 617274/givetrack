@@ -442,8 +442,8 @@ public class GlanceFragment extends Fragment implements
         String amount = mViewTracked ? mTracked : mTotal;
         String timeframe = mViewTracked ? mTimeTracked : mTotalTime;
         String textMessage =
-                String.format("I have donated a total of %s to charity since %s! #%s App",
-                        amount, timeframe, getString(R.string.app_name));
+                String.format("%s, I have donated a total of %s to charity! #%s App",
+                        timeframe, amount, getString(R.string.app_name));
         ViewUtilities.launchShareIntent(mParentActivity, textMessage);
     }
 
