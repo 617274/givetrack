@@ -1,5 +1,3 @@
-.DS_Store
-
 # Configuration
 *.jks
 app/google-services.json
@@ -18,19 +16,20 @@ gen/
 *.log
 
 # Build
+/build
 build.xml
 ant.properties
 local.properties
 project.properties
 keystore.properties
 .externalNativeBuild
+.DS_Store
 
 # Gradle
 .gradle
 build/
 release/
 .gradle/
-.idea/
 styles.css/
 index.html/
 local.properties/
@@ -50,10 +49,18 @@ proguard/
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
-*.iml
 .idea/workspace.xml
+/.idea/caches
+/.idea/misc.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
 
 # Android Studio
 captures/
 /captures
 .navigation/
+/local.properties
+.cxx
+
+# API keys
+/src/main/res/values/keys.xml

@@ -1,6 +1,66 @@
-/build
-*.iml
+# Configuration
 *.jks
+app/google-services.json
+givetrack-schema.json
+
+# Library
+*.class
+/libs
+
+# Generated
+*.apk
+*.ap_
+bin/
+out/
+gen/
+*.log
+
+# Build
+/build
+build.xml
+ant.properties
+local.properties
+project.properties
+keystore.properties
+.externalNativeBuild
+.DS_Store
+
+# Gradle
+.gradle
+build/
+release/
+.gradle/
+styles.css/
+index.html/
+local.properties/
+script.js
+
+# Dex VM
+*.dex
+
+# Eclipse
+proguard/
+
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+.idea/workspace.xml
+/.idea/caches
+/.idea/misc.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Android Studio
+captures/
+/captures
+.navigation/
+/local.properties
+.cxx
 
 # API keys
 /src/main/res/values/keys.xml
