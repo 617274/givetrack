@@ -172,17 +172,17 @@ final class DataUtilities {
     static Spawn parseSpawn(JSONObject charityObject, String uid) throws JSONException {
 
         JSONObject locationObject = charityObject.getJSONObject(DatasourceContract.KEY_LOCATION);
-        String ein = charityObject.getString(DatasourceContract.KEY_EIN);
-        String name = charityObject.getString(DatasourceContract.KEY_CHARITY_NAME);
-        String street = locationObject.getString(DatasourceContract.KEY_STREET_ADDRESS);
-        String detail = locationObject.getString(DatasourceContract.KEY_ADDRESS_DETAIL);
-        String city = locationObject.getString(DatasourceContract.KEY_CITY);
-        String state = locationObject.getString(DatasourceContract.KEY_STATE);
-        String zip = locationObject.getString(DatasourceContract.KEY_POSTAL_CODE);
-        String homepageUrl = charityObject.getString(DatasourceContract.KEY_WEBSITE_URL);
-        String navigatorUrl = charityObject.getString(DatasourceContract.KEY_CHARITY_NAVIGATOR_URL);
+        String ein = nullToDefaultStr(charityObject.getString(DatasourceContract.KEY_EIN));
+        String name = nullToDefaultStr(charityObject.getString(DatasourceContract.KEY_CHARITY_NAME));
+        String street = nullToDefaultStr(locationObject.getString(DatasourceContract.KEY_STREET_ADDRESS));
+        String detail = nullToDefaultStr(locationObject.getString(DatasourceContract.KEY_ADDRESS_DETAIL));
+        String city = nullToDefaultStr(locationObject.getString(DatasourceContract.KEY_CITY));
+        String state = nullToDefaultStr(locationObject.getString(DatasourceContract.KEY_STATE));
+        String zip = nullToDefaultStr(locationObject.getString(DatasourceContract.KEY_POSTAL_CODE));
+        String homepageUrl = nullToDefaultStr(charityObject.getString(DatasourceContract.KEY_WEBSITE_URL));
+        String navigatorUrl = nullToDefaultStr(charityObject.getString(DatasourceContract.KEY_CHARITY_NAVIGATOR_URL));
 
-        return new Spawn(uid, ein, System.currentTimeMillis(), name, street, !detail.equals("null") ? detail : "", city, state, zip, homepageUrl, navigatorUrl, "", "", "", 0, 0);
+        return new Spawn(uid, ein, System.currentTimeMillis(), name, street, detail, city, state, zip, homepageUrl, navigatorUrl, "", "", "", 0, 0);
     }
 
     /**
