@@ -445,7 +445,7 @@ public class GiveFragment extends Fragment implements
             actionBarColor = R.color.colorCheer;
             actionBarIcon = R.drawable.action_save;
             progressBarVisibility = View.VISIBLE;
-        } else if (mAmountTotal / mListLength < .3f) {
+        } else if (mAmountTotal / mListLength < 0f) {
             barWrapperColor = R.color.colorAttention;
             actionBarColor = R.color.colorAttentionLight;
             actionBarIcon = android.R.drawable.stat_sys_warning;
