@@ -315,7 +315,8 @@ final class DataUtilities {
     static Elements parseElements(String url, String cssQuery) throws IOException {
         Document homepage = new Document("");
         // Establish whether URL is valid before attempting to connect
-        if (URLUtil.isValidUrl(url)) homepage = Jsoup.connect(url).get();
+        try { if (URLUtil.isValidUrl(url)) homepage = Jsoup.connect(url).get(); }
+        catch (IOException e) {  }
         return homepage != null ? homepage.select(cssQuery) : new Elements();
     }
 
