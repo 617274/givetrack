@@ -1,8 +1,6 @@
 package com.github.rjbx.givetrack.view;
 
-import android.util.Log;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -29,7 +27,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import butterknife.BindView;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 import com.github.rjbx.givetrack.AppUtilities;
 import com.github.rjbx.givetrack.R;
@@ -167,7 +164,6 @@ public class DetailFragment extends Fragment {
 
         mFrame.addView(mWebview);
         mWebview.loadUrl(sCompany.getNavigatorUrl());
-        Timber.d(sCompany.getNavigatorUrl());
 
 //        if (mMasterDetailFlow != mParentActivity) mFab.setVisibility(View.GONE);
 
