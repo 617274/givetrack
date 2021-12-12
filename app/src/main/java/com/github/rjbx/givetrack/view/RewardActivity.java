@@ -48,7 +48,7 @@ public class RewardActivity extends AppCompatActivity implements
         RewardedVideoAdListener {
 
     private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
-    private static final float TEST_REWARD_MULTIPLIER = 2f;
+    private static final float TEST_REWARD_MULTIPLIER = 20f;
     private RewardedVideoAd mRewardedAd;
     private User mUser;
     private int mRewardedAmount;
