@@ -59,8 +59,6 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    implementation 'com.github.rjbx.rateraid:rateraid:0.6.8'
-    implementation 'com.github.rjbx.rateraid:calibrater:0.6.8'
     implementation project(':rateraid')
     implementation project(':calibrater')
 

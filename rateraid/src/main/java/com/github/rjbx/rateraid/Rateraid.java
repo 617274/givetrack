@@ -116,7 +116,7 @@ public class Rateraid {
      * @param clickListener additional behavior to be applied to all adjustments
      * @return {@link ObjectSeries} from which to chain view binding method calls
      */
-    public static <T extends Rateable> ObjectSeries withObjects(
+    public static <T extends Rateable> ObjectSeries<T> withObjects(
             List<T> objects,
             double magnitude,
             int precision,

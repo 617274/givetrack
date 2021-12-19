@@ -50,6 +50,7 @@ import com.github.rjbx.givetrack.data.entry.Spawn;
 import com.github.rjbx.givetrack.data.entry.Target;
 import com.github.rjbx.givetrack.data.entry.User;
 import com.github.rjbx.rateraid.Rateraid;
+import com.github.rjbx.rateraid.Rateraid.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class GiveFragment extends Fragment implements
     private InputMethodManager mMethodManager;
     private DetailFragment mDetailFragment;
     private HomeActivity mParentActivity;
-    private Rateraid.RateableSeries mSeries;
+    private ObjectSeries<Target> mSeries;
     private AlertDialog mRemoveDialog;
     private ListAdapter mListAdapter;
     private Unbinder mUnbinder;
@@ -485,7 +486,7 @@ public class GiveFragment extends Fragment implements
          */
         ListAdapter(List<Target> targetList) {
             mTargetList = targetList;
-            mSeries = Rateraid.with(mTargetList, mMagnitude, Calibrater.STANDARD_PRECISION, clickedView -> {
+            mSeries = Rateraid.withObjects(mTargetList, mMagnitude, Calibrater.STANDARD_PRECISION, clickedView -> {
                 sPercentagesAdjusted = true;
                 scheduleSyncPercentages();
                 renderActionBar();
