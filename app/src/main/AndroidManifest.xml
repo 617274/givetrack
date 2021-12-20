@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.rjbx.givetrack">
+    package="art.coded.givetrack">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.location.gps" />
@@ -36,7 +36,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.github.rjbx.givetrack.view.HomeActivity" />
+                android:value="art.coded.givetrack.view.HomeActivity" />
         </activity>
 
         <activity
@@ -46,7 +46,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.github.rjbx.givetrack.view.HomeActivity" />
+                android:value="art.coded.givetrack.view.HomeActivity" />
         </activity>
 
         <activity
@@ -70,7 +70,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.github.rjbx.givetrack.view.HomeActivity" />
+                android:value="art.coded.givetrack.view.HomeActivity" />
         </activity>
 
         <activity
@@ -80,7 +80,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.github.rjbx.givetrack.view.HomeActivity" />
+                android:value="art.coded.givetrack.view.HomeActivity" />
         </activity>
 
         <receiver android:name=".AppWidget">
@@ -101,11 +101,11 @@
 
         <provider
             android:name=".data.DatabaseProvider"
-            android:authorities="com.github.rjbx.givetrack"
+            android:authorities="art.coded.givetrack"
             android:exported="false" />
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.github.rjbx.givetrack.fileprovider"
+            android:authorities="art.coded.givetrack.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
