@@ -1,6 +1,9 @@
 # Configuration
 *.jks
+free/google-services.json
+paid/google-services.json
 app/google-services.json
+
 givetrack-schema.json
 
 # Library
