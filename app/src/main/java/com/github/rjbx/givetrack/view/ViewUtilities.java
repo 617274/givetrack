@@ -94,8 +94,10 @@ final class ViewUtilities {
     }
 
     static Toast centerToastMessage(Toast toast) {
-        View view = toast.getView().findViewById(android.R.id.message);
-        if (view != null) view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        View parentView = toast.getView();
+        if (parentView == null) return toast;
+        View messageView = parentView.findViewById(android.R.id.message);
+        if (messageView != null) messageView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         return toast;
     }
 
