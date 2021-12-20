@@ -23,19 +23,19 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-//    flavorDimensions "version"
-//    productFlavors {
-//        paid {
-//            dimension "version"
-//            applicationIdSuffix ".paid"
-//            versionNameSuffix "-paid"
-//        }
-//        free {
-//            dimension "version"
-//            applicationIdSuffix ".free"
-//            versionNameSuffix "-free"
-//        }
-//    }
+    flavorDimensions "version"
+    productFlavors {
+        paid {
+            dimension "version"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
+        }
+        free {
+            dimension "version"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+        }
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
