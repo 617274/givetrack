@@ -228,7 +228,7 @@ public class IndexActivity extends AppCompatActivity implements
                 } else mInstanceStateRestored = false;
                 if (mFetching) {
                     if (isDualPane()) showSinglePane();
-                    mSnackbarMessage = getString(R.string.message_spawn_refresh, mUser.getIndexCount() + mUser.getUserCredit());
+                    mSnackbarMessage = getString(R.string.message_spawn_refresh);
                     sb.setText(mSnackbarMessage).show();
                     mFetching = false;
                     sDialogShown = mUser.getIndexDialog();
