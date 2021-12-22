@@ -299,12 +299,14 @@ final class DataUtilities {
         for (int j = 0; j < anchors.size(); j++) {
             Element anchor = anchors.get(j);
             if (anchor.hasAttr("href")) {
+                if (anchor.attr("href").contains(key))
+                    values.add(anchor.attr("href").split(key)[1].trim());
                 String attribute = anchor.attr("href");
-                if (anchor.attr("href").contains(key)) {
-                    String[] keys = attribute.split(key);
-                    if (keys.length > 1) {
-                        values.add(anchor.attr("href").split(key)[1].trim());
-                    } else Timber.d(String.format("Key of %s is not more than one character", key),this);
+                if (attribute.contains(key)) {
+                    String[] keySplit = attribute.split(key);
+                    if (keySplit.length > 1) {
+                        values.add(keySplit[1].trim());
+                    } else Timber.d("Element with split key contains only one String of %s", keySplit[0]);
                 }
             } else if (anchor.text().contains(key)) {
                 String text = anchor.text();
