@@ -119,14 +119,4 @@
 
     </LinearLayout>
 
-    <com.google.android.gms.ads.AdView
-
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/index_banner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/am_banner_id"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
