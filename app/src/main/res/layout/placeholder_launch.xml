@@ -24,11 +24,11 @@
 
         <ProgressBar
             android:id="@+id/launch_progress"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:visibility="gone"
             android:layout_gravity="center"
-            android:indeterminateTint="@color/colorCheerLight"/>
+            android:indeterminateTint="@color/colorCheerDark"/>
 
     </FrameLayout>
 

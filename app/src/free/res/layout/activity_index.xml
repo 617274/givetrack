@@ -89,12 +89,22 @@
                     tools:context=".view.IndexActivity"
                     tools:listitem="@layout/item_index"/>
 
+                <ImageView
+                    android:id="@+id/spawn_icon"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:padding="24dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:visibility="gone"
+                    android:layout_gravity="center"/>
+
                 <ProgressBar
                     android:id="@+id/spawn_progress"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:visibility="gone"
                     android:layout_gravity="center"
-                    android:visibility="gone"/>
+                    android:indeterminateTint="@color/colorCheerDark"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/spawn_fab"

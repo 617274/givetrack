@@ -86,6 +86,7 @@ public class IndexActivity extends AppCompatActivity implements
     private boolean mFetching = false;
     private boolean mLock = true;
     @BindView(R.id.spawn_progress) View mSpawnProgress;
+    @BindView(R.id.spawn_icon) ImageView mSpawnIcon;
     @BindView(R.id.spawn_fab) FloatingActionButton mFab;
     @BindView(R.id.spawn_toolbar) Toolbar mToolbar;
     @BindView(R.id.spawn_list) RecyclerView mRecyclerView;
@@ -129,7 +130,7 @@ public class IndexActivity extends AppCompatActivity implements
         new ItemTouchHelper(getSimpleCallback(
                 ItemTouchHelper.ACTION_STATE_IDLE,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
-                )).attachToRecyclerView(mRecyclerView);
+        )).attachToRecyclerView(mRecyclerView);
 
         if (isDualPane()) ViewUtilities.launchDetailPane(this, mListContainer, mDetailContainer);
     }
@@ -219,6 +220,7 @@ public class IndexActivity extends AppCompatActivity implements
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
                 mSpawnProgress.setVisibility(View.GONE);
+                mSpawnIcon.setVisibility(View.GONE);
                 mValuesArray = new Spawn[data.getCount()];
                 if (!mInstanceStateRestored) {
                     int i = 0;
@@ -410,6 +412,7 @@ public class IndexActivity extends AppCompatActivity implements
      */
     private void fetchResults() {
         mSpawnProgress.setVisibility(View.VISIBLE);
+        mSpawnIcon.setVisibility(View.VISIBLE);
         DatabaseManager.startActionFetchSpawn(getBaseContext());
         mSnackbarMessage = getString(R.string.message_spawn_refresh);
         mFetching = true;
