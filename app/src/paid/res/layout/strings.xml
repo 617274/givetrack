@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">Givetrack</string>
+    <string name="app_id">{$applicationId}</string>
+
+    <!-- Errors -->
+    <string name="removal_error_message">An unexpected error occurred; could not remove %s from your search results.</string>
+    <string name="network_error_message">There is a problem with the network. Please check your connection and try again.</string>
+    <string name="payment_error_message">The request could not be processed. Please check that your method of payment is valid and try again.</string>
+    <string name="provider_error_message">"Unable to establish a connection with %s. Please try again later.</string>
+    <string name="create_error_message">%s: Failed to create file from path</string>
+    <string name="output_error_message">%s: Failed to generate output stream from file directory</string>
+    <string name="location_error_message">Response from location update permission request generated a Security Exception: %s</string>
+    <string name="loader_error_message">Loader Not Implemented: %d</string>
+    <string name="invalid_swipe_message">Unhandled swipe direction</string>
+    <string name="remit_error">The payment feature is not available at this time..</string>
+
+    <!-- Options -->
+    <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
+    <string name="action_recalibrate">Recalibrate Gifts</string>
+    <string name="action_clear">Clear Charities</string>
+    <string name="action_magnitude_label">Adjustment Magnitude</string>
+    <string name="action_toggle_on">Toggle overlay on</string>
+    <string name="action_toggle_off">Toggle overlay off</string>
+    <string name="action_overlay">Apply overlay</string>
+    <string name="dialog_option_cancel">CANCEL</string>
+    <string name="dialog_option_erase">ERASE</string>
+    <string name="dialog_option_return">RETURN</string>
+    <string name="dialog_option_keep">KEEP</string>
+    <string name="dialog_option_change">CHANGE</string>
+    <string name="dialog_option_confirm">OK</string>
+    <string name="dialog_option_decline">NO</string>
+    <string name="dialog_option_remove">REMOVE</string>
+    <string name="dialog_option_later">REMIND ME LATER</string>
+    <string name="dialog_option_start">GET STARTED</string>
+
+    <!-- Accessibility -->
+    <string name="description_close_button">Press this button to close this view</string>
+    <string name="description_open_button">Press this button to expand this view</string>
+    <string name="description_charity_logo">This is the logo that corresponds to the listed charity</string>
+    <string name="description_refresh_button">Press this button to refresh the list of charities</string>
+    <string name="description_collected_add_button">Press this button to add this charity to your collection</string>
+    <string name="description_collected_remove_button">Press this button to remove this charity from your collection</string>
+    <string name="description_change_button">Press this button to change the color of the ribbon</string>
+    <string name="description_detect_location">Press this button to detect your current location</string>
+    <string name="description_credit_button">Press this button to add to your credit by %s</string>
+    <string name="description_credit_toggle_button">Press this button to change the response of the big circle button. The current response is to add credit by %s</string>
+    <string name="description_donation_text">Press this button to add to your total donation amount. The total amount that will be allocated among your charities on each converted smile or stride is %s</string>
+    <string name="description_decrement_donation_text">Press this button to decrease your total donation amount</string>
+    <string name="description_increment_donation_text">Press this button to increase your total donation amount</string>
+    <string name="description_decrement_percentage_text">Press this button to decrease the percentage of your total donation amount to be allocated to this charity on each converted smile or stride</string>
+    <string name="description_increment_percentage_text">Press this button to increase the percentage of your total donation amount to be allocated to this charity on each converted smile or stride</string>
+
+    <!-- Screens -->
+    <string name="title_activity_home">Home Activity</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_index">Search Results</string>
+    <string name="title_activity_journal">Past Activity</string>
+    <string name="title_charity_detail">Charity Detail</string>
+    <string name="title_activity_config">Settings</string>
+    <string name="title_activity_reward">Coin Generator</string>
+    <string name="title_activity_remit">Remit Gift</string>
+
+    <!-- Main -->
+    <string name="nav_header_title">Givetrack</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_subtitle">Menu</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_menu_interact">Interact</string>
+    <string name="nav_menu_manage">Manage</string>
+    <string name="nav_menu_learn">Learn</string>
+    <string name="nav_item_index">Search</string>
+    <string name="nav_item_reward">Credit</string>
+    <string name="nav_item_journal">History</string>
+    <string name="nav_item_settings">Settings</string>
+    <string name="nav_item_logout">Logout</string>
+    <string name="nav_item_cn">About Charity Navigator API</string>
+    <string name="nav_item_clearbit">About Clearbit API</string>
+    <string name="url_cn">https://www.charitynavigator.org/index.cfm?bay=content.view&amp;cpid=1397</string>
+    <string name="url_clearbit">https://clearbit.com/</string>
+    <string name="tab_text_1">Give</string>
+    <string name="tab_text_2">Glance</string>
+    <string name="historical_dialog_message">Do you want to change back to the current date after recording the next donation?</string>
+    <string name="anchor_dialog_message">Do you want to change the date to %s for recording gifts?</string>
+
+    <!-- Auth -->
+    <string name="fui_tos_and_pp">By continuing, you are indicating that you accept our %1$s and %2$s. Charity data and logos powered by Charity Navigator and Clearbit API.</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
+    <string name="dialog_description_account_deletion">Are you sure you want to delete your account? Your data will be erased and cannot be recovered.</string>
+    <string name="message_logout">You successfully logged out</string>
+    <string name="message_data_erase">Your account has been erased</string>
+    <string name="message_login">You successfully logged in as %s</string>
+    <string name="message_password_request">Please confirm your password to proceed.</string>
+
+    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
+    <string name="start_level">Level 1</string>
+    <string name="next_level">Next Level</string>
+    <string name="message_billing_client">Billing client is ready</string>
+    <string name="dialog_balance_preview">Earn twenty coins by viewing a promotion. Each coin is good until used and redeemable for one search request<!-- or one fee waiver-->.</string>
+    <string name="reward_response">earning reward</string>
+    <string name="payment_response">making a payment</string>
+    <string name="description_reward_text">Your available rewarded credit is %s</string>
+    <string name="description_payment_text">Your available paid credit is %s</string>
+    <string name="description_wallet_text">Your total available credit is %s</string>
+    <string name="dialog_later">REMIND ME LATER</string>
+    <string name="dialog_start">GET STARTED</string>
+
+    <!-- Widget -->
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!-- Charity -->
+    <string name="dialog_message_current">Do you want to set the date of gifts to current?</string>
+    <string name="dialog_message_recalibrate">Do you want to allocate the same percentage of dentations to each charity? The change is not permanent as you can still manually adjust the allocations afterward.</string>
+    <string name="dialog_description_magnitude_adjustment">Change the magnitude of increments and decrements.The current magnitude is %s</string>
+    <string name="dialog_filter_setup">To set up your search filters, click the icon in the top right corner, or press \'Get Started\'.</string>
+    <string name="message_remove_entry">Remove %s from your %s?</string>
+    <string name="message_clear_all">Your %ss will not be recoverable except by %s them again. Are you sure you want to permanently delete all of your %ss?</string>
+    <string name="message_update_email">Confirm your account email and password.</string>
+    <string name="snippet_all_charities">all charities</string>
+    <string name="message_empty_collection">Your charity collection is empty!\nAdd charities here:</string>
+    <string name="message_record_refresh">Your records have been updated.</string>
+    <string name="message_spawn_refresh">Your search results have been refreshed.</string>
+<!--    <string name="message_spawn_exhausted">You have no searches remaining for today. Earn and redeem coins, or try again at least one day after your last search.</string>-->
+    <string name="message_generated_remove">%s has been removed from your search results. </string>
+    <string name="message_collected_add">"%s has been added to your collection"</string>
+    <string name="message_collected_remove">"%s has been removed from your collection"</string>
+    <string name="indicator_donation_frequency">Gifts: %s</string>
+    <string name="indicator_donation_impact">Impact: %s</string>
+    <string name="axis_value_high">All-time high</string>
+    <string name="axis_value_this">This %s</string>
+    <string name="axis_value_yester">Yester%s</string>
+    <string name="axis_value_interval">%d %ss Ago</string>
+    <string name="axis_value_alltime">%sly High</string>
+    <string name="axis_value_daily">Daily</string>
+    <string name="axis_value_donation">Donated</string>
+    <string name="chart_title_timing">Historical Scope</string>
+    <string name="chart_title_average">Impact Distribution</string>
+    <string name="chart_title_activity">Recent Activity</string>
+    <string name="chart_title_usage">Record Highs</string>
+    <string name="chart_title_percentage">Gift Recipients</string>
+    <string name="charts_title"><u>Giving</u></string>
+    <string name="symbol_increment_button">+</string>
+    <string name="symbol_decrement_button">—</string>
+
+    <!-- SharedPreferences -->
+    <string name="pref_indexTerm_key" translatable="false">indexTerm</string>
+    <string name="pref_indexCity_key" translatable="false">indexCity</string>
+    <string name="pref_indexState_key" translatable="false">indexState</string>
+    <string name="pref_indexZip_key" translatable="false">indexZip</string>
+    <string name="pref_indexPages_key" translatable="false">indexPages</string>
+    <string name="pref_indexSize_key" translatable="false">indexRows</string>
+    <string name="pref_indexMinrating_key" translatable="false">indexMinrating</string>
+    <string name="pref_indexFilter_key" translatable="false">indexFilter</string>
+    <string name="pref_indexRanked_key" translatable="false">indexRanked</string>
+    <string name="pref_journalSort_key" translatable="false">journalSort</string>
+    <string name="pref_journalOrder_key" translatable="false">journalOrder</string>
+    <string name="pref_indexFocus_key" translatable="false">indexFocus</string>
+    <string name="pref_userGender_key" translatable="false">userGender</string>
+    <string name="pref_userBirthdate_label">Birthdate</string>
+    <string name="pref_userConvert_label">Convert Guest To User</string>
+    <string name="pref_userEmail_key" translatable="false">userEmail</string>
+    <string name="pref_userBirthdate_key" translatable="false">userBirthdate</string>
+    <string name="pref_userConvert_key" translatable="false">userConvert</string>
+    <string name="pref_delete_key" translatable="false">deleteAccount</string>
+    <string name="pref_giveReset_key" translatable="false">giveReset</string>
+    <string name="pref_giveCurrent_key" translatable="false">giveCurrent</string>
+    <string name="pref_giveMagnitude_key" translatable="false">giveMagnitude</string>
+    <string name="pref_giveRounding_key" translatable="false">giveRounding</string>
+    <string name="pref_indexCompany_key" translatable="false">indexCompany</string>
+    <string name="pref_indexDialog_key" translatable="false">indexDialog</string>
+    <string name="pref_clear_key" translatable="false">clearData</string>
+    <string name="pref_reset_key" translatable="false">resetSearch</string>
+    <string name="pref_show_key" translatable="false">showAll</string>
+    <string name="pref_payment_key" translatable="false">givePayment</string>
+    <string name="pref_indexTerm_label">Keywords</string>
+    <string name="pref_indexCity_label">City</string>
+    <string name="pref_indexState_label">State</string>
+    <string name="pref_indexZip_label">Postal Code</string>
+    <string name="pref_indexStart_label">Start</string>
+    <string name="pref_indexRows_label">Rows</string>
+    <string name="pref_indexMinrating_label">Minimum Rating</string>
+    <string name="pref_indexFundraising_label">Advisory Filter</string>
+    <string name="pref_indexRanked_label">CN Top Picks</string>
+    <string name="pref_indexFocused_label">Single Entity Search</string>
+    <string name="pref_indexEin_label">EIN</string>
+    <string name="pref_indexGender_label">Gender</string>
+    <string name="pref_delete_label">Delete Account</string>
+    <string name="pref_giveReset_label">Equal Percents</string>
+    <string name="pref_giveCurrent_label">Record Current Record</string>
+    <string name="pref_magnitude_label">Adjustment Magnitude</string>
+    <string name="pref_clear_label">Clear Data</string>
+    <string name="pref_reset_label">Reset Search Settings</string>
+    <string name="pref_show_label">Show All</string>
+    <string name="pref_payments_label">Process Gifts</string>
+
+    <!-- General settings -->
+    <string name="pref_header_user">User</string>
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact based on your message history</string>
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_userEmail_label">Change Email</string>
+    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_default_userEmail">example@example.com</string>
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Spawn settings -->
+    <string name="pref_header_index">Search</string>
+    <string-array name="list_preference_indexMinrating">
+        <item>No Preference</item>
+        <item>★</item>
+        <item>★★</item>
+        <item>★★★</item>
+        <item>★★★★</item>
+    </string-array>
+    <string-array name="list_preference_indexMinrating_values">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="list_preference_state">
+        <item>Alaska</item>
+        <item>Alabama</item>
+        <item>Arkansas</item>
+        <item>Arizona</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>District of Columbia</item>
+        <item>Delaware</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Hawaii</item>
+        <item>Iowa</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Massachusetts</item>
+        <item>Maryland</item>
+        <item>Maine</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Missouri</item>
+        <item>Mississippi</item>
+        <item>Montana</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Nebraska</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>Nevada</item>
+        <item>New York</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Pennsylvania</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Virginia</item>
+        <item>Vermont</item>
+        <item>Washington</item>
+        <item>Wisconsin</item>
+        <item>West Virginia</item>
+        <item>Wyoming</item>
+        <item>No Preference</item>
+    </string-array>
+    <string-array name="list_preference_state_values">
+        <item>AK</item>
+        <item>AL</item>
+        <item>AR</item>
+        <item>AZ</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DC</item>
+        <item>DE</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>HI</item>
+        <item>IA</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>MA</item>
+        <item>MD</item>
+        <item>ME</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MO</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>NE</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NV</item>
+        <item>NY</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>OR</item>
+        <item>PA</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VA</item>
+        <item>VT</item>
+        <item>WA</item>
+        <item>WI</item>
+        <item>WV</item>
+        <item>WY</item>
+        <item></item>
+    </string-array>
+    <string-array name="list_preference_gender">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="list_preference_gender_values">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="list_preference_sortJournal">
+        <item>By date</item>
+        <item>By amount</item>
+        <item>By name</item>
+    </string-array>
+    <string-array name="list_preference_sortJournal_values">
+        <item>time</item>
+        <item>impact</item>
+        <item>name</item>
+    </string-array>
+    <string-array name="list_preference_orderIndex">
+        <item>Descending</item>
+        <item>Ascending</item>
+    </string-array>
+    <string-array name="list_preference_orderIndex_values">
+        <item>DESC</item>
+        <item>ASC</item>
+    </string-array>
+    <string-array name="list_preference_orderJournal">
+        <item>Descending</item>
+        <item>Ascending</item>
+    </string-array>
+    <string-array name="list_preference_orderJournal_values">
+        <item>DESC</item>
+        <item>ASC</item>
+    </string-array>
+    <string-array name="multi_select_list_preference_default_value" />
+
+
+    <string name="pref_header_give">Home</string>
+
+    <string name="pref_giveRounding_label">Round Record Amounts</string>
+    <string-array name="list_preference_giveRounding">
+        <item>Down</item>
+        <item>Up</item>
+        <item>Exact</item>
+    </string-array>
+    <string-array name="list_preference_giveRounding_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pref_header_record">History</string>
+
+    <!-- Notification settings -->
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_vibrate">Vibrate</string>
+
+    <!-- Advanced settings -->
+    <string name="pref_header_advanced">Advanced</string>
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+        <item>No Preference</item>
+    </string-array>
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item></item>
+    </string-array>
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+</resources>
