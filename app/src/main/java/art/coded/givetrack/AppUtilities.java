@@ -1,20 +1,14 @@
 package art.coded.givetrack;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.os.Parcelable;
-import android.preference.PreferenceActivity;
 
 import art.coded.givetrack.data.entry.Entry;
 import art.coded.givetrack.data.entry.User;
-import art.coded.givetrack.view.ConfigActivity;
-import art.coded.givetrack.view.JournalActivity;
-import art.coded.givetrack.view.HomeActivity;
-import art.coded.givetrack.view.IndexActivity;
+
 import com.google.firebase.auth.FirebaseUser;
 
 import java.lang.reflect.Array;

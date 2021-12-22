@@ -14,8 +14,9 @@ import android.widget.RemoteViewsService;
 import art.coded.givetrack.data.DatabaseContract;
 import art.coded.givetrack.data.entry.Target;
 import art.coded.givetrack.view.HomeActivity;
-import art.coded.givetrack.view.JournalActivity;
 import art.coded.givetrack.view.IndexActivity;
+import art.coded.givetrack.view.JournalActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

@@ -29,25 +29,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import art.coded.givetrack.AppUtilities;
+import art.coded.givetrack.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import com.bumptech.glide.Glide;
-import art.coded.givetrack.AppUtilities;
-import art.coded.givetrack.R;
 
 import art.coded.givetrack.data.DatabaseContract;
 import art.coded.givetrack.data.DatabaseManager;
 import art.coded.givetrack.data.entry.Company;
 import art.coded.givetrack.data.entry.Spawn;
 import art.coded.givetrack.data.entry.User;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.concurrent.TimeUnit;
 
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;

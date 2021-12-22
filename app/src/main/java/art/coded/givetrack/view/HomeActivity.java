@@ -36,7 +36,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Optional;
