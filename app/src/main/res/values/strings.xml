@@ -3,6 +3,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">Givetrack</string>
+    <string name="app_id">{$applicationId}</string>
 
     <!-- Errors -->
     <string name="removal_error_message">An unexpected error occurred; could not remove %s from your search results.</string>
@@ -107,7 +108,7 @@
     <string name="start_level">Level 1</string>
     <string name="next_level">Next Level</string>
     <string name="message_billing_client">Billing client is ready</string>
-    <string name="dialog_balance_preview">Earn twenty coins by viewing a promotion. Each coin is good until used and redeemable for one search request<!-- or one fee waiver-->.</string>
+    <string name="dialog_balance_preview">Earn 20 coins by viewing a promotion. Redeem 200 coins for a free pass to Givetrack Paid for a friend. Go to coded.art/givetrack for more details on rewards and redemption.</string>
     <string name="reward_response">earning reward</string>
     <string name="payment_response">making a payment</string>
     <string name="description_reward_text">Your available rewarded credit is %s</string>
@@ -131,8 +132,8 @@
     <string name="snippet_all_charities">all charities</string>
     <string name="message_empty_collection">Your charity collection is empty!\nAdd charities here:</string>
     <string name="message_record_refresh">Your records have been updated.</string>
-    <string name="message_spawn_refresh">Your search results have been refreshed. You have %d searches remaining for today.</string>
-    <string name="message_spawn_exhausted">You have no searches remaining for today. Earn and redeem coins, or try again at least one day after your last search.</string>
+    <string name="message_spawn_refresh">Your search results have been refreshed.</string>
+<!--    <string name="message_spawn_exhausted">You have no searches remaining for today. Earn and redeem coins, or try again at least one day after your last search.</string>-->
     <string name="message_generated_remove">%s has been removed from your search results. </string>
     <string name="message_collected_add">"%s has been added to your collection"</string>
     <string name="message_collected_remove">"%s has been removed from your collection"</string>
@@ -443,5 +444,6 @@
         <item></item>
     </string-array>
     <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="error_reward">The video could not be loaded. If the problem persists, contact info@coded.art. In the meantime, one coin has been added to your balance</string>
 
 </resources>

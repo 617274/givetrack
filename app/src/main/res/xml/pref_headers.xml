@@ -3,31 +3,31 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
 
     <header
-        android:fragment="com.github.rjbx.givetrack.view.ConfigActivity$UserPreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$UserPreferenceFragment"
         android:icon="@drawable/menu_user"
         android:title="@string/pref_header_user" />
     <!--<header-->
-        <!--android:fragment="com.github.rjbx.givetrack.ui.ConfigActivity$NotificationPreferenceFragment"-->
+        <!--android:fragment="art.coded.givetrack.ui.ConfigActivity$NotificationPreferenceFragment"-->
         <!--android:icon="@drawable/menu_info"-->
         <!--android:title="@string/pref_header_notifications" />-->
 
     <header
-        android:fragment="com.github.rjbx.givetrack.view.ConfigActivity$HomePreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$HomePreferenceFragment"
         android:icon="@drawable/arrow_expand_horizontal_dark"
         android:title="@string/pref_header_give" />
 
     <header
-        android:fragment="com.github.rjbx.givetrack.view.ConfigActivity$IndexPreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$IndexPreferenceFragment"
         android:icon="@drawable/menu_filter"
         android:title="@string/pref_header_index" />
 
     <header
-        android:fragment="com.github.rjbx.givetrack.view.ConfigActivity$JournalPreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$JournalPreferenceFragment"
         android:icon="@drawable/filter_outline"
         android:title="@string/pref_header_record" />
 
     <header
-        android:fragment="com.github.rjbx.givetrack.view.ConfigActivity$AdvancedPreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$AdvancedPreferenceFragment"
         android:icon="@drawable/menu_manage"
         android:title="@string/pref_header_advanced" />
 
