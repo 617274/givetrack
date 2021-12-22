@@ -101,7 +101,7 @@
 
         <provider
             android:name=".data.DatabaseProvider"
-            android:authorities="${applicationId}.databaseprovider"
+            android:authorities="art.coded.givetrack.databaseprovider"
             android:exported="false" />
         <provider
             android:name="androidx.core.content.FileProvider"
