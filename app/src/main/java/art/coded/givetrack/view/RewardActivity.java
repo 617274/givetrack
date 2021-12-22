@@ -89,7 +89,7 @@ public class RewardActivity extends AppCompatActivity implements
 
         mRewardedAmount = mUser.getUserCredit();
 
-        if (mRewardedAmount == 0) launchDialog();
+        if (mRewardedAmount == 0) launchDialog(R.string.dialog_balance_preview);
 
         mRewardedView.setText(String.valueOf(mRewardedAmount));
         mRewardedAd.resume(this);
@@ -105,9 +105,9 @@ public class RewardActivity extends AppCompatActivity implements
         mToggleContainer.setPadding(0, (int) getResources().getDimension(R.dimen.toggle_padding), 0, 0);
     }
 
-    private void launchDialog() {
+    private void launchDialog(int stringRes) {
         AlertDialog dialog = new android.app.AlertDialog.Builder(this).create();
-        dialog.setMessage(getString(R.string.dialog_balance_preview));
+        dialog.setMessage(getString(stringRes));
         dialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.dialog_start),
                 (onClickDialog, onClickPosition) -> dialog.dismiss());
         dialog.show();
@@ -212,6 +212,7 @@ public class RewardActivity extends AppCompatActivity implements
 
         mUser.setUserCredit(mRewardedAmount);
         DatabaseManager.startActionUpdateUser(this, mUser);
+        launchDialog(R.string.error_reward);
 
     }
     @Override public void onRewardedVideoCompleted() {}
@@ -237,7 +238,7 @@ public class RewardActivity extends AppCompatActivity implements
                 startActivity(new Intent(this, HomeActivity.class));
                 return true;
             case R.id.action_settings:
-                launchDialog();
+                launchDialog(R.string.dialog_balance_preview);
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -444,5 +444,6 @@
         <item></item>
     </string-array>
     <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="error_reward">The video could not be loaded. If the problem persists, contact info@coded.art. In the meantime, one coin has been added to your balance</string>
 
 </resources>
