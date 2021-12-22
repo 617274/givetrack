@@ -1,7 +1,7 @@
 # Configuration
 *.jks
-free/google-services.json
-paid/google-services.json
+/src/free/google-services.json
+/src/paid/google-services.json
 app/google-services.json
 
 givetrack-schema.json
