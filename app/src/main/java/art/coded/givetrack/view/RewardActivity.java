@@ -204,7 +204,16 @@ public class RewardActivity extends AppCompatActivity implements
     }
     @Override public void onRewardedVideoAdClosed() { updateRewardButton(false); }
     @Override public void onRewardedVideoAdLeftApplication() { }
-    @Override public void onRewardedVideoAdFailedToLoad(int i) { updateRewardButton(false); }
+    @Override public void onRewardedVideoAdFailedToLoad(int i) {
+        updateRewardButton(false);
+        mRewardedAmount += 1; // Converts points to cash amount
+        mRewardedView.setText(String.valueOf(mRewardedAmount));
+        mRewardedView.setContentDescription(getString(R.string.description_reward_text, CURRENCY_FORMATTER.format(mRewardedAmount)));
+
+        mUser.setUserCredit(mRewardedAmount);
+        DatabaseManager.startActionUpdateUser(this, mUser);
+
+    }
     @Override public void onRewardedVideoCompleted() {}
 
     /**
