@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
  */
 public final class DatabaseContract {
 
-    static final String AUTHORITY = "art.coded.givetrack.paid.databaseprovider";
+    static final String AUTHORITY = "art.coded.givetrack.databaseprovider";
     static final String PATH_SPAWN_TABLE = "spawn.table";
     static final String PATH_TARGET_TABLE = "target.table";
     static final String PATH_RECORD_TABLE = "record.table";
