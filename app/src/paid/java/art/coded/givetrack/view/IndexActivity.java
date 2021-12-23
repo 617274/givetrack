@@ -51,6 +51,8 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
+import java.util.Arrays;
+
 /**
  * Presents a list of entities spawned from a remote data API with toggleable detail pane.
  */
@@ -216,6 +218,8 @@ public class IndexActivity extends AppCompatActivity implements
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
+                Spawn[] oldValuesArray = new Spawn[data.getCount()];
+                if (mValuesArray != null) for (int i = 0; i < mValuesArray.length; i++) oldValuesArray[i] = mValuesArray[i];
                 mValuesArray = new Spawn[data.getCount()];
                 boolean dataUpdated = false;
                 if (!mInstanceStateRestored) {
@@ -223,11 +227,11 @@ public class IndexActivity extends AppCompatActivity implements
                     do {
                         Spawn spawn = Spawn.getDefault();
                         AppUtilities.cursorRowToEntry(data, spawn);
-                        if (mValuesArray[i] != null && mValuesArray[i].getStamp() != spawn.getStamp()) dataUpdated = true;
+                        if (oldValuesArray[i] != null && !oldValuesArray[i].getEin().equals(spawn.getEin())) dataUpdated = true;
                         Timber.v("Spawn Entry Stamp: %s", spawn.getStamp());
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
-                    mAdapter.swapValues(mValuesArray); mLock = true;
+                    mAdapter.swapValues(mValuesArray);
                     Timber.v("Current User Spawn Stamp: %d", mUser.getSpawnStamp());
                     if (dataUpdated) {
                         mSpawnProgress.setVisibility(View.GONE);
