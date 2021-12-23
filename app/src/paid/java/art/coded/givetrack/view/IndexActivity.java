@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,6 +84,7 @@ public class IndexActivity extends AppCompatActivity implements
     private boolean mInstanceStateRestored;
     private boolean mFetching = false;
     private boolean mLock = true;
+    private long mPreviousSpawnStamp;
     @BindView(R.id.spawn_progress) View mSpawnProgress;
     @BindView(R.id.spawn_fab) FloatingActionButton mFab;
     @BindView(R.id.spawn_toolbar) Toolbar mToolbar;
@@ -216,19 +218,23 @@ public class IndexActivity extends AppCompatActivity implements
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
-                long stamp = data.getExtras().getLong("spawnStamp");
-                Timber.d("spawnStamp: %d", stamp);
-                mSpawnProgress.setVisibility(View.GONE);
-                mFab.setVisibility(View.VISIBLE);
                 mValuesArray = new Spawn[data.getCount()];
                 if (!mInstanceStateRestored) {
                     int i = 0;
                     do {
                         Spawn spawn = Spawn.getDefault();
+                        Timber.v("Spawn Entry Stamp: %d", spawn.getStamp());
                         AppUtilities.cursorRowToEntry(data, spawn);
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
                     mAdapter.swapValues(mValuesArray);
+                    long currentSpawnStamp = mUser.getSpawnStamp();
+                    Timber.v("Previous User Spawn Stamp: %d", mPreviousSpawnStamp);
+                    Timber.v("Current User Spawn Stamp: %d", currentSpawnStamp);
+                    if (currentSpawnStamp != mPreviousSpawnStamp) {
+                        mSpawnProgress.setVisibility(View.GONE);
+                        mFab.setVisibility(View.VISIBLE);
+                    } mPreviousSpawnStamp = currentSpawnStamp;
                 } else mInstanceStateRestored = false;
                 if (mFetching) {
                     if (isDualPane()) showSinglePane();
