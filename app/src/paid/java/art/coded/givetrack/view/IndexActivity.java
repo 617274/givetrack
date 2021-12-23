@@ -214,6 +214,7 @@ public class IndexActivity extends AppCompatActivity implements
                 }
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
+                // TODO: Detect and handle failed remote fetch on branch dev_fetch
                 if (mLock) break;
                 mSpawnProgress.setVisibility(View.GONE);
                 mFab.setVisibility(View.VISIBLE);
