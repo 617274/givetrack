@@ -218,10 +218,15 @@ public class IndexActivity extends AppCompatActivity implements
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
-                Spawn[] oldValuesArray = new Spawn[data.getCount()];
-                if (mValuesArray != null) oldValuesArray = Arrays.copyOf(mValuesArray, mValuesArray.length);
+                int cursorDataLength = data.getCount();
+                int valuesArrayLength = mValuesArray != null ? mValuesArray.length : 0;
+                boolean dataUpdated = (cursorDataLength != valuesArrayLength);
+                int oldValuesArrayLength = Math.max(cursorDataLength, valuesArrayLength);
+                Spawn[] oldValuesArray = new Spawn[oldValuesArrayLength];
+                if (mValuesArray != null)
+                    for (int i = 0; i < mValuesArray.length; i++)
+                        oldValuesArray[i] = mValuesArray[i];
                 mValuesArray = new Spawn[data.getCount()];
-                boolean dataUpdated = false;
                 if (!mInstanceStateRestored) {
                     int i = 0;
                     do {
