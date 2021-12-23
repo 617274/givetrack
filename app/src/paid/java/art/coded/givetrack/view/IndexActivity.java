@@ -223,8 +223,8 @@ public class IndexActivity extends AppCompatActivity implements
                     int i = 0;
                     do {
                         Spawn spawn = Spawn.getDefault();
-                        Timber.v("Spawn Entry Stamp: %d", spawn.getStamp());
                         AppUtilities.cursorRowToEntry(data, spawn);
+                        Timber.v("Spawn Entry Stamp: %s", spawn.getStamp());
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
                     mAdapter.swapValues(mValuesArray);
