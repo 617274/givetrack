@@ -42,6 +42,7 @@ import art.coded.givetrack.data.DatabaseManager;
 import art.coded.givetrack.data.entry.Company;
 import art.coded.givetrack.data.entry.Spawn;
 import art.coded.givetrack.data.entry.User;
+import timber.log.Timber;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -214,8 +215,9 @@ public class IndexActivity extends AppCompatActivity implements
                 }
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
-                // TODO: Detect and handle failed remote fetch on branch dev_fetch
                 if (mLock) break;
+                long stamp = data.getExtras().getLong("spawnStamp");
+                Timber.d("spawnStamp: %d", stamp);
                 mSpawnProgress.setVisibility(View.GONE);
                 mFab.setVisibility(View.VISIBLE);
                 mValuesArray = new Spawn[data.getCount()];
