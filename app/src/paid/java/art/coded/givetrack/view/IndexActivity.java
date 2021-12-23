@@ -219,7 +219,7 @@ public class IndexActivity extends AppCompatActivity implements
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
                 Spawn[] oldValuesArray = new Spawn[data.getCount()];
-                if (mValuesArray != null) for (int i = 0; i < mValuesArray.length; i++) oldValuesArray[i] = mValuesArray[i];
+                if (mValuesArray != null) oldValuesArray = Arrays.copyOf(mValuesArray, mValuesArray.length);
                 mValuesArray = new Spawn[data.getCount()];
                 boolean dataUpdated = false;
                 if (!mInstanceStateRestored) {
@@ -231,7 +231,7 @@ public class IndexActivity extends AppCompatActivity implements
                         Timber.v("Spawn Entry Stamp: %s", spawn.getStamp());
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
-                    mAdapter.swapValues(mValuesArray);
+                    mAdapter.swapValues(mValuesArray); mLock = true;
                     Timber.v("Current User Spawn Stamp: %d", mUser.getSpawnStamp());
                     if (dataUpdated) {
                         mSpawnProgress.setVisibility(View.GONE);
