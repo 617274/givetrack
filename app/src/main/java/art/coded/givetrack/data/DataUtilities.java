@@ -49,7 +49,7 @@ final class DataUtilities {
         switch (name) {
             case DatabaseContract.CompanyEntry.TABLE_NAME_TARGET: return DatabaseContract.UserEntry.COLUMN_TARGET_STAMP;
             case DatabaseContract.CompanyEntry.TABLE_NAME_RECORD: return DatabaseContract.UserEntry.COLUMN_RECORD_STAMP;
-            case DatabaseContract.CompanyEntry.TABLE_NAME_SPAWN: return "";
+            case DatabaseContract.CompanyEntry.TABLE_NAME_SPAWN: return DatabaseContract.UserEntry.COLUMN_SPAWN_STAMP;
             case DatabaseContract.UserEntry.TABLE_NAME_USER: return DatabaseContract.UserEntry.COLUMN_USER_STAMP;
             default: throw new IllegalArgumentException("Argument must implement Entry interface");
         }

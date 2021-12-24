@@ -42,6 +42,7 @@ import art.coded.givetrack.data.DatabaseManager;
 import art.coded.givetrack.data.entry.Company;
 import art.coded.givetrack.data.entry.Spawn;
 import art.coded.givetrack.data.entry.User;
+import timber.log.Timber;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -49,6 +50,8 @@ import com.google.android.material.snackbar.Snackbar;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
+
+import java.util.Arrays;
 
 /**
  * Presents a list of entities spawned from a remote data API with toggleable detail pane.
@@ -67,7 +70,7 @@ public class IndexActivity extends AppCompatActivity implements
     private static final String STATE_ARRAY = "art.coded.givetrack.ui.state.SPAWN_ARRAY";
     private static final String STATE_LOCK = "art.coded.givetrack.ui.state.LOADER_LOCK";
     private static final String STATE_USER = "art.coded.givetrack.ui.state.ACTIVE_USER";
-    private static final int DAILY_LIMIT = 3;
+//    private static final int DAILY_LIMIT = 3;
     private static boolean sDualPane;
     private Spawn[] mValuesArray;
     private ListAdapter mAdapter;
@@ -214,19 +217,31 @@ public class IndexActivity extends AppCompatActivity implements
                 }
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
-                // TODO: Detect and handle failed remote fetch on branch dev_fetch
                 if (mLock) break;
-                mSpawnProgress.setVisibility(View.GONE);
-                mFab.setVisibility(View.VISIBLE);
+                int cursorDataLength = data.getCount();
+                int valuesArrayLength = mValuesArray != null ? mValuesArray.length : 0;
+                boolean dataUpdated = (cursorDataLength != valuesArrayLength);
+                int oldValuesArrayLength = Math.max(cursorDataLength, valuesArrayLength);
+                Spawn[] oldValuesArray = new Spawn[oldValuesArrayLength];
+                if (mValuesArray != null)
+                    for (int i = 0; i < mValuesArray.length; i++)
+                        oldValuesArray[i] = mValuesArray[i];
                 mValuesArray = new Spawn[data.getCount()];
                 if (!mInstanceStateRestored) {
                     int i = 0;
                     do {
                         Spawn spawn = Spawn.getDefault();
                         AppUtilities.cursorRowToEntry(data, spawn);
+                        if (oldValuesArray[i] != null && !oldValuesArray[i].getEin().equals(spawn.getEin())) dataUpdated = true;
+                        Timber.v("Spawn Entry Stamp: %s", spawn.getStamp());
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
-                    mAdapter.swapValues(mValuesArray);
+                    mAdapter.swapValues(mValuesArray); mLock = true;
+                    Timber.v("Current User Spawn Stamp: %d", mUser.getSpawnStamp());
+                    if (dataUpdated) {
+                        mSpawnProgress.setVisibility(View.GONE);
+                        mFab.setVisibility(View.VISIBLE);
+                    }
                 } else mInstanceStateRestored = false;
                 if (mFetching) {
                     if (isDualPane()) showSinglePane();

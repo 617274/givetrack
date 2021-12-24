@@ -99,6 +99,7 @@ public final class DatabaseContract {
         public static final String COLUMN_JOURNAL_ORDER = "journalOrder";
         public static final String COLUMN_TARGET_STAMP = "targetStamp";
         public static final String COLUMN_RECORD_STAMP = "recordStamp";
+        public static final String COLUMN_SPAWN_STAMP = "spawnStamp";
         public static final String COLUMN_USER_STAMP = "userStamp";
         public static final String COLUMN_USER_CREDIT = "userCredit";
     }

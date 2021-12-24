@@ -53,6 +53,7 @@ public class User implements Entry, Parcelable, Cloneable {
     private String indexState;
     private String indexTerm;
     private String indexZip;
+    private long spawnStamp;
     private long targetStamp; // Time of most recent change to target table
     private String uid;
     private boolean userActive;
@@ -148,6 +149,7 @@ public class User implements Entry, Parcelable, Cloneable {
         journalOrder = source.readString();
         targetStamp = source.readLong();
         recordStamp = source.readLong();
+        spawnStamp = source.readLong();
         userStamp = source.readLong();
     }
 
@@ -189,6 +191,7 @@ public class User implements Entry, Parcelable, Cloneable {
         this.journalOrder = user.journalOrder;
         this.targetStamp = user.targetStamp;
         this.recordStamp = user.recordStamp;
+        this.spawnStamp = user.spawnStamp;
         this.userStamp = user.userStamp;
     }
 
@@ -238,6 +241,7 @@ public class User implements Entry, Parcelable, Cloneable {
             String journalOrder,
             long targetStamp,
             long recordStamp,
+            long spawnStamp,
             long userStamp) {
         this.uid = uid;
         this.userEmail = userEmail;
@@ -276,6 +280,7 @@ public class User implements Entry, Parcelable, Cloneable {
         this.journalOrder = journalOrder;
         this.targetStamp = targetStamp;
         this.recordStamp = recordStamp;
+        this.spawnStamp = spawnStamp;
         this.userStamp = userStamp;
     }
 
@@ -353,6 +358,8 @@ public class User implements Entry, Parcelable, Cloneable {
     public void setTargetStamp(long targetStamp) { this.targetStamp = targetStamp; }
     public long getRecordStamp() { return recordStamp; }
     public void setRecordStamp(long recordStamp) { this.recordStamp = recordStamp; }
+    public long getSpawnStamp() { return spawnStamp; }
+    public void setSpawnStamp(long recordStamp) { this.spawnStamp = spawnStamp; }
     public long getUserStamp() { return userStamp; }
     public void setUserStamp(long userStamp) { this.userStamp = userStamp; }
     @Override public String getId() { return uid; }
@@ -397,6 +404,7 @@ public class User implements Entry, Parcelable, Cloneable {
         map.put(COLUMN_JOURNAL_ORDER, journalOrder);
         map.put(COLUMN_TARGET_STAMP, targetStamp);
         map.put(COLUMN_RECORD_STAMP, recordStamp);
+        map.put(COLUMN_SPAWN_STAMP, spawnStamp);
         map.put(COLUMN_USER_STAMP, userStamp);
         return map;
     }
@@ -433,6 +441,7 @@ public class User implements Entry, Parcelable, Cloneable {
         if (map.containsKey(COLUMN_JOURNAL_ORDER)) journalOrder = (String) map.get(COLUMN_JOURNAL_ORDER);
         if (map.containsKey(COLUMN_RECORD_STAMP)) recordStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_RECORD_STAMP), Long.class);
         if (map.containsKey(COLUMN_TARGET_STAMP)) targetStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_TARGET_STAMP), Long.class);
+        if (map.containsKey(COLUMN_SPAWN_STAMP)) spawnStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_SPAWN_STAMP), Long.class);
         if (map.containsKey(COLUMN_USER_STAMP)) userStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_USER_STAMP), Long.class);
         if (map.containsKey(COLUMN_UID)) uid = (String) map.get(COLUMN_UID);
         if (map.containsKey(COLUMN_USER_EMAIL)) userEmail = (String) map.get(COLUMN_USER_EMAIL);
@@ -480,6 +489,7 @@ public class User implements Entry, Parcelable, Cloneable {
         values.put(COLUMN_JOURNAL_ORDER, journalOrder);
         values.put(COLUMN_TARGET_STAMP, targetStamp);
         values.put(COLUMN_RECORD_STAMP, recordStamp);
+        values.put(COLUMN_SPAWN_STAMP, spawnStamp);
         values.put(COLUMN_USER_STAMP, userStamp);
         values.put(COLUMN_USER_CREDIT, userCredit);
         return values;
@@ -522,6 +532,7 @@ public class User implements Entry, Parcelable, Cloneable {
         journalOrder = values.getAsString(COLUMN_JOURNAL_ORDER);
         targetStamp = values.getAsLong(COLUMN_TARGET_STAMP);
         recordStamp = values.getAsLong(COLUMN_RECORD_STAMP);
+        spawnStamp = values.getAsLong(COLUMN_SPAWN_STAMP);
         userStamp = values.getAsLong(COLUMN_USER_STAMP);
         userCredit = values.getAsInteger(COLUMN_USER_CREDIT);
     }
@@ -570,8 +581,9 @@ public class User implements Entry, Parcelable, Cloneable {
         user.indexRanked = true;
         user.journalSort = "time";
         user.journalOrder = "DESC";
-        user.targetStamp = 0; // Resets User stamps
-        user.recordStamp = 0; // Resets User stamps
+        user.targetStamp = 0; // Resets Target stamps
+        user.recordStamp = 0; // Resets Record stamps
+        user.spawnStamp = 0; // Resets Spawn stamps
         user.userStamp = 0; // Resets User stamps
         user.userCredit = 0;
         return user;

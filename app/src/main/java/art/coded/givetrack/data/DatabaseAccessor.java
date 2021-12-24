@@ -440,7 +440,7 @@ final class DatabaseAccessor {
 
     private static <T extends Entry> void updateLocalTableTime(ContentResolver local, Class<T> entryType, long stamp, String uid) {
 
-        if (entryType.equals(Spawn.class) || uid == null || uid.isEmpty()) return;
+        if (uid == null || uid.isEmpty()) return;
         Uri uri = UserEntry.CONTENT_URI_USER.buildUpon().appendPath(uid).build();
 
         ContentValues companyValues = new ContentValues();
