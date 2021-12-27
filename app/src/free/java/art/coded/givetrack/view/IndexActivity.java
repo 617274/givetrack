@@ -42,6 +42,8 @@ import art.coded.givetrack.data.DatabaseManager;
 import art.coded.givetrack.data.entry.Company;
 import art.coded.givetrack.data.entry.Spawn;
 import art.coded.givetrack.data.entry.User;
+import timber.log.Timber;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
