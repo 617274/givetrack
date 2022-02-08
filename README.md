@@ -1,6 +1,6 @@
-﻿# Givetrack
+﻿# givetrack
 
-**An app that visualizes a history of giving.**
+Contribution tracker made with Rateraid, MPAndroidChart, Stripe, Firebase (RT DB, Auth), and Google (Ads, Wallet) API
 
 Users can record and reference the value of their charitable contributions (monetary consideration, in-kind goods, volunteer service) to specific charities.
 
