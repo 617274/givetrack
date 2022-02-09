@@ -78,7 +78,7 @@ final class DataUtilities {
     }
 
     /**
-     * Builds the proper {@link Uri} for requesting movie data.
+     * Builds the proper {@link Uri} for requesting charity data.
      * Users must register and reference a unique API key.
      * API keys are available at http://api.charitynavigator.org/
      * @return {@link Uri} for requesting data from the API service.

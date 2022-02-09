@@ -29,13 +29,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import art.coded.givetrack.AppUtilities;
+import art.coded.givetrack.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import com.bumptech.glide.Glide;
-import art.coded.givetrack.AppUtilities;
-import art.coded.givetrack.R;
 
 import art.coded.givetrack.data.DatabaseContract;
 import art.coded.givetrack.data.DatabaseManager;
@@ -44,21 +44,19 @@ import art.coded.givetrack.data.entry.Spawn;
 import art.coded.givetrack.data.entry.User;
 import timber.log.Timber;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.concurrent.TimeUnit;
 
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
+import java.util.Arrays;
+
 /**
  * Presents a list of entities spawned from a remote data API with toggleable detail pane.
  */
-public class IndexActivity extends AppCompatActivity implements
+public class SpawnActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
         DetailFragment.MasterDetailFlow,
         DialogInterface.OnClickListener {
@@ -72,7 +70,7 @@ public class IndexActivity extends AppCompatActivity implements
     private static final String STATE_ARRAY = "art.coded.givetrack.ui.state.SPAWN_ARRAY";
     private static final String STATE_LOCK = "art.coded.givetrack.ui.state.LOADER_LOCK";
     private static final String STATE_USER = "art.coded.givetrack.ui.state.ACTIVE_USER";
-    private static final int DAILY_LIMIT = 3;
+//    private static final int DAILY_LIMIT = 3;
     private static boolean sDualPane;
     private Spawn[] mValuesArray;
     private ListAdapter mAdapter;
@@ -93,14 +91,14 @@ public class IndexActivity extends AppCompatActivity implements
     @BindView(R.id.spawn_list) RecyclerView mRecyclerView;
     @BindView(R.id.spawn_list_container) View mListContainer;
     @BindView(R.id.spawn_detail_container) View mDetailContainer;
-    @BindView(R.id.index_banner) AdView mAdBanner;
+//    @BindView(R.id.index_banner) AdView mAdBanner;
 
     /**
      * Instantiates a swipeable RecyclerView and FloatingActionButton.
      */
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_index);
+        setContentView(R.layout.activity_spawn);
         ButterKnife.bind(this);
 
         getSupportLoaderManager().initLoader(LOADER_ID_USER, null, this);
@@ -131,7 +129,7 @@ public class IndexActivity extends AppCompatActivity implements
         new ItemTouchHelper(getSimpleCallback(
                 ItemTouchHelper.ACTION_STATE_IDLE,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
-        )).attachToRecyclerView(mRecyclerView);
+                )).attachToRecyclerView(mRecyclerView);
 
         if (isDualPane()) ViewUtilities.launchDetailPane(this, mListContainer, mDetailContainer);
     }
@@ -155,7 +153,7 @@ public class IndexActivity extends AppCompatActivity implements
      * Generates an options Menu.
      */
     @Override public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.index, menu);
+        getMenuInflater().inflate(R.menu.spawn, menu);
         return true;
     }
 
@@ -220,21 +218,34 @@ public class IndexActivity extends AppCompatActivity implements
                 break;
             case DatabaseContract.LOADER_ID_SPAWN:
                 if (mLock) break;
-                mSpawnProgress.setVisibility(View.GONE);
-                mFab.setVisibility(View.VISIBLE);
+                int cursorDataLength = data.getCount();
+                int valuesArrayLength = mValuesArray != null ? mValuesArray.length : 0;
+                boolean dataUpdated = (cursorDataLength != valuesArrayLength);
+                int oldValuesArrayLength = Math.max(cursorDataLength, valuesArrayLength);
+                Spawn[] oldValuesArray = new Spawn[oldValuesArrayLength];
+                if (mValuesArray != null)
+                    for (int i = 0; i < mValuesArray.length; i++)
+                        oldValuesArray[i] = mValuesArray[i];
                 mValuesArray = new Spawn[data.getCount()];
                 if (!mInstanceStateRestored) {
                     int i = 0;
                     do {
                         Spawn spawn = Spawn.getDefault();
                         AppUtilities.cursorRowToEntry(data, spawn);
+                        if (oldValuesArray[i] != null && !oldValuesArray[i].getEin().equals(spawn.getEin())) dataUpdated = true;
+                        Timber.v("Spawn Entry Stamp: %s", spawn.getStamp());
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
-                    mAdapter.swapValues(mValuesArray);
+                    mAdapter.swapValues(mValuesArray); mLock = true;
+                    Timber.v("Current User Spawn Stamp: %d", mUser.getSpawnStamp());
+                    if (dataUpdated) {
+                        mSpawnProgress.setVisibility(View.GONE);
+                        mFab.setVisibility(View.VISIBLE);
+                    }
                 } else mInstanceStateRestored = false;
                 if (mFetching) {
                     if (isDualPane()) showSinglePane();
-                    mSnackbarMessage = getString(R.string.message_spawn_refresh, mUser.getIndexCount() + mUser.getUserCredit());
+                    mSnackbarMessage = getString(R.string.message_spawn_refresh);
                     sb.setText(mSnackbarMessage).show();
                     mFetching = false;
                     sDialogShown = mUser.getIndexDialog();
@@ -260,7 +271,7 @@ public class IndexActivity extends AppCompatActivity implements
                             mUser = user;
                             if (mValuesArray == null || !mInstanceStateRestored) getSupportLoaderManager().initLoader(LOADER_ID_SPAWN, null, this);
                             if ((mAddedName == null && mRemovedName == null) || mInstanceStateRestored) getSupportLoaderManager().initLoader(LOADER_ID_TARGET, null, this);
-                            if (mUser.getUserCredit() == 0) mAdBanner.loadAd(new AdRequest.Builder().build());
+//                            if (mUser.getUserCredit() == 0) mAdBanner.loadAd(new AdRequest.Builder().build());
                             break;
                         }
                     } while (data.moveToNext());
@@ -290,7 +301,7 @@ public class IndexActivity extends AppCompatActivity implements
         sDualPane = true;
         if (mDetailFragment == null) {
             mDetailFragment = DetailFragment.newInstance(args);
-            IndexActivity.this.getSupportFragmentManager().beginTransaction()
+            SpawnActivity.this.getSupportFragmentManager().beginTransaction()
                     .replace(R.id.spawn_detail_container, mDetailFragment)
                     .commit();
         }
@@ -349,33 +360,33 @@ public class IndexActivity extends AppCompatActivity implements
     }
 
     /**
-     * Populates {@link IndexActivity} {@link RecyclerView}.
+     * Populates {@link SpawnActivity} {@link RecyclerView}.
      */
     @OnClick(R.id.spawn_fab) public void refreshResults() {
-        if (mUser == null) return;
-        int indexCount = mUser.getIndexCount();
-        int userCredit = mUser.getUserCredit();
-        int remainingFetches = indexCount + userCredit;
-        if (remainingFetches <= 0) {
-            finish();
-            startActivity(new Intent(this, RewardActivity.class));
-            return;
-        } else if (remainingFetches == 1) {
-            mSnackbarMessage = getString(R.string.message_spawn_exhausted);
-            Snackbar sb = Snackbar.make(mFab, mSnackbarMessage, Snackbar.LENGTH_LONG);
-            sb.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
-            sb.show();
-        }
+//        if (mUser == null) return;
+//        int indexCount = mUser.getIndexCount();
+//        int userCredit = mUser.getUserCredit();
+//        int remainingFetches = indexCount + userCredit;
+//        if (remainingFetches <= 0) {
+//            finish();
+//            startActivity(new Intent(this, RewardActivity.class));
+//            return;
+//        } else if (remainingFetches == 1) {
+//            mSnackbarMessage = getString(R.string.message_spawn_exhausted);
+//            Snackbar sb = Snackbar.make(mFab, mSnackbarMessage, Snackbar.LENGTH_LONG);
+//            sb.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
+//            sb.show();
+//        }
 
-        long currentTime = System.currentTimeMillis();
-        int days = (int) TimeUnit.MILLISECONDS.toDays(currentTime - mUser.getIndexAnchor());
-        if (days > 0) {
-            mUser.setIndexAnchor(currentTime);
-            mUser.setIndexCount(DAILY_LIMIT);
-        } else {
-            if (indexCount > 0) mUser.setIndexCount(--indexCount);
-            else mUser.setUserCredit(--userCredit);
-        }
+//        long currentTime = System.currentTimeMillis();
+//        int days = (int) TimeUnit.MILLISECONDS.toDays(currentTime - mUser.getIndexAnchor());
+//        if (days > 0) {
+//            mUser.setIndexAnchor(currentTime);
+//            mUser.setIndexCount(DAILY_LIMIT);
+//        } else {
+//            if (indexCount > 0) mUser.setIndexCount(--indexCount);
+//            else mUser.setUserCredit(--userCredit);
+//        }
         DatabaseManager.startActionUpdateUser(this, mUser);
 
         fetchResults();
@@ -435,7 +446,7 @@ public class IndexActivity extends AppCompatActivity implements
                         break;
                     case ItemTouchHelper.RIGHT:
                         final String url = values.getNavigatorUrl();
-                        ViewUtilities.launchBrowserIntent(IndexActivity.this, Uri.parse(url));
+                        ViewUtilities.launchBrowserIntent(SpawnActivity.this, Uri.parse(url));
                         break;
                     default:
                 }
@@ -444,7 +455,7 @@ public class IndexActivity extends AppCompatActivity implements
     }
 
     /**
-     * Populates {@link IndexActivity} {@link RecyclerView}.
+     * Populates {@link SpawnActivity} {@link RecyclerView}.
      */
     class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
@@ -466,12 +477,12 @@ public class IndexActivity extends AppCompatActivity implements
         @Override public @NonNull ViewHolder onCreateViewHolder(
                 @NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_index, parent, false);
+                    .inflate(R.layout.item_spawn, parent, false);
             return new ViewHolder(view);
         }
 
         /**
-         * Updates contents of the {@code ViewHolder} to displays movie data at the specified position.
+         * Updates contents of the {@code ViewHolder} to displays charity data at the specified position.
          */
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
@@ -505,7 +516,7 @@ public class IndexActivity extends AppCompatActivity implements
                 }
             }
 
-            Glide.with(IndexActivity.this).load("https://logo.clearbit.com/" + homepage)
+            Glide.with(SpawnActivity.this).load("https://logo.clearbit.com/" + homepage)
                     .into(holder.mLogoView);
 
             holder.itemView.setTag(position);

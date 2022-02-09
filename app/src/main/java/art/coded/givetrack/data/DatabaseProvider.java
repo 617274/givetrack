@@ -321,7 +321,7 @@ public class DatabaseProvider extends ContentProvider {
             throw new IllegalArgumentException();
         }
         String rowsSpecifier = uri.getLastPathSegment().matches("\\d+") ? "item" : "dir";
-        return "vnd.android.cursor." + rowsSpecifier + "/vnd.movieglance." + tableName;
+        return "vnd.android.cursor." + rowsSpecifier + "/vnd.charityglance." + tableName;
     }
 
     /**

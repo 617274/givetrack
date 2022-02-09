@@ -197,8 +197,8 @@ public class HomeActivity extends AppCompatActivity implements
                         calendar.get(Calendar.DAY_OF_MONTH));
                 datePicker.show();
                 break;
-            case R.id.action_add: finish(); startActivity(new Intent(this, IndexActivity.class)); break;
-            case R.id.action_history: finish(); startActivity(new Intent(this, JournalActivity.class)); break;
+            case R.id.action_add: finish(); startActivity(new Intent(this, SpawnActivity.class)); break;
+            case R.id.action_history: finish(); startActivity(new Intent(this, RecordActivity.class)); break;
             default: return super.onOptionsItemSelected(item);
         } return false;
     }
@@ -309,8 +309,8 @@ public class HomeActivity extends AppCompatActivity implements
 
         int id = item.getItemId();
         switch (id) {
-            case (R.id.nav_spawn): finish(); startActivity(new Intent(this, IndexActivity.class)); break;
-            case (R.id.nav_record): finish(); startActivity(new Intent(this, JournalActivity.class)); break;
+            case (R.id.nav_spawn): finish(); startActivity(new Intent(this, SpawnActivity.class)); break;
+            case (R.id.nav_record): finish(); startActivity(new Intent(this, RecordActivity.class)); break;
             case (R.id.nav_reward): finish(); startActivity(new Intent(this, RewardActivity.class)); break;
             case (R.id.nav_settings): finish(); startActivity(new Intent(this, ConfigActivity.class).setAction(ACTION_HOME_INTENT).putExtra(ConfigActivity.ARG_ITEM_USER, mUser)); break;
             case (R.id.nav_logout): finish(); startActivity(new Intent(this, AuthActivity.class).setAction(AuthActivity.ACTION_SIGN_OUT)); break;
@@ -476,7 +476,7 @@ public class HomeActivity extends AppCompatActivity implements
          * Defines behavior on click of launch spawn button.
          */
         @Optional
-        @OnClick(R.id.placeholder_button) void launchSpawn()  { mParentActivity.finish(); startActivity(new Intent(getActivity(), IndexActivity.class)); }
+        @OnClick(R.id.placeholder_button) void launchSpawn()  { mParentActivity.finish(); startActivity(new Intent(getActivity(), SpawnActivity.class)); }
     }
 
     /**

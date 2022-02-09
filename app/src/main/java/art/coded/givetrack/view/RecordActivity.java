@@ -67,12 +67,12 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 /**
  * Presents a list of editable giving records with toggleable detail pane.
  */
-public class JournalActivity extends AppCompatActivity implements
+public class RecordActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>,
         DetailFragment.MasterDetailFlow,
         DialogInterface.OnClickListener {
 
-    public static final String ACTION_JOURNAL_INTENT = "art.coded.givetrack.ui.action.JOURNAL_INTENT";
+    public static final String ACTION_RECORD_INTENT = "art.coded.givetrack.ui.action.RECORD_INTENT";
     private static final String STATE_POSITION = "art.coded.givetrack.ui.state.GIVE_POSITION";
     private static final String STATE_PANE = "art.coded.givetrack.ui.state.RECORD_PANE";
     private static final String STATE_ADDED = "art.coded.givetrack.ui.state.ADDED_TARGET";
@@ -103,7 +103,7 @@ public class JournalActivity extends AppCompatActivity implements
      */
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_journal);
+        setContentView(R.layout.activity_record);
         ButterKnife.bind(this);
 
         getSupportLoaderManager().initLoader(LOADER_ID_USER, null, this);
@@ -156,7 +156,7 @@ public class JournalActivity extends AppCompatActivity implements
      * Generates an options Menu.
      */
     @Override public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.journal, menu);
+        getMenuInflater().inflate(R.menu.record, menu);
         return true;
     }
 
@@ -170,7 +170,7 @@ public class JournalActivity extends AppCompatActivity implements
                 startActivity(new Intent(this, HomeActivity.class));
                 return true;
             case (R.id.action_record):
-                ViewUtilities.launchPreferenceFragment(this, ACTION_JOURNAL_INTENT);
+                ViewUtilities.launchPreferenceFragment(this, ACTION_RECORD_INTENT);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -189,7 +189,7 @@ public class JournalActivity extends AppCompatActivity implements
     @NonNull @Override public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
         switch (id) {
             case LOADER_ID_TARGET: return new CursorLoader(this, DatabaseContract.CompanyEntry.CONTENT_URI_TARGET, null, DatabaseContract.CompanyEntry.COLUMN_UID + " = ? ", new String[] { mUser.getUid() }, null);
-            case LOADER_ID_RECORD: return new CursorLoader(this, DatabaseContract.CompanyEntry.CONTENT_URI_RECORD, null, DatabaseContract.CompanyEntry.COLUMN_UID + " = ? ", new String[] { mUser.getUid() }, mUser.getJournalSort() + " " + mUser.getJournalOrder());
+            case LOADER_ID_RECORD: return new CursorLoader(this, DatabaseContract.CompanyEntry.CONTENT_URI_RECORD, null, DatabaseContract.CompanyEntry.COLUMN_UID + " = ? ", new String[] { mUser.getUid() }, mUser.getRecordSort() + " " + mUser.getRecordOrder());
             case LOADER_ID_USER: return new CursorLoader(this, DatabaseContract.UserEntry.CONTENT_URI_USER, null, DatabaseContract.UserEntry.COLUMN_USER_ACTIVE + " = ? ", new String[] { "1" }, null);
             default: throw new RuntimeException(this.getString(R.string.loader_error_message, id));
         }
@@ -281,7 +281,7 @@ public class JournalActivity extends AppCompatActivity implements
         sDualPane = true;
         if (mDetailFragment == null) {
             mDetailFragment = DetailFragment.newInstance(args);
-            JournalActivity.this.getSupportFragmentManager().beginTransaction()
+            RecordActivity.this.getSupportFragmentManager().beginTransaction()
                     .replace(R.id.record_detail_container, mDetailFragment)
                     .commit();
         }
@@ -363,12 +363,12 @@ public class JournalActivity extends AppCompatActivity implements
                         String name = values.getName();
                         String formattedDate = DATE_FORMATTER.format(mDeletedTime);
                         mDeletedTime = values.getTime();
-                        mRemoveDialog = new AlertDialog.Builder(JournalActivity.this).create();
+                        mRemoveDialog = new AlertDialog.Builder(RecordActivity.this).create();
                         String messageArgs = String.format("this contribution for %s in the amount of %s on %s", name, amount, formattedDate);
-                        String screenName = JournalActivity.class.getSimpleName().replace("Activity", "").toLowerCase();
+                        String screenName = RecordActivity.class.getSimpleName().replace("Activity", "").toLowerCase();
                         mRemoveDialog.setMessage(getString(R.string.message_remove_entry, messageArgs, screenName));
-                        mRemoveDialog.setButton(android.app.AlertDialog.BUTTON_NEUTRAL, getString(R.string.dialog_option_keep), JournalActivity.this);
-                        mRemoveDialog.setButton(android.app.AlertDialog.BUTTON_NEGATIVE, getString(R.string.dialog_option_remove), JournalActivity.this);
+                        mRemoveDialog.setButton(android.app.AlertDialog.BUTTON_NEUTRAL, getString(R.string.dialog_option_keep), RecordActivity.this);
+                        mRemoveDialog.setButton(android.app.AlertDialog.BUTTON_NEGATIVE, getString(R.string.dialog_option_remove), RecordActivity.this);
                         mRemoveDialog.show();
                         mRemoveDialog.getButton(android.app.AlertDialog.BUTTON_NEUTRAL).setTextColor(getResources().getColor(R.color.colorNeutralDark, null));
                         Button button = mRemoveDialog.getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
@@ -377,7 +377,7 @@ public class JournalActivity extends AppCompatActivity implements
                         break;
                     case ItemTouchHelper.RIGHT:
                         final String url = values.getNavigatorUrl();
-                        ViewUtilities.launchBrowserIntent(JournalActivity.this, Uri.parse(url));
+                        ViewUtilities.launchBrowserIntent(RecordActivity.this, Uri.parse(url));
                         break;
                     default:
                 }
@@ -386,7 +386,7 @@ public class JournalActivity extends AppCompatActivity implements
     }
 
     /**
-     * Populates {@link JournalActivity} {@link RecyclerView}.
+     * Populates {@link RecordActivity} {@link RecyclerView}.
      */
     class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
@@ -404,12 +404,12 @@ public class JournalActivity extends AppCompatActivity implements
         @Override public @NonNull ViewHolder onCreateViewHolder(
                 @NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_journal, parent, false);
+                    .inflate(R.layout.item_record, parent, false);
             return new ViewHolder(view);
         }
 
         /**
-         * Updates contents of the {@code ViewHolder} to displays movie data at the specified position.
+         * Updates contents of the {@code ViewHolder} to displays charity data at the specified position.
          */
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
@@ -524,8 +524,8 @@ public class JournalActivity extends AppCompatActivity implements
                     Record record = mValuesArray[position];
 
                     String memo = record.getMemo();
-                    mDetailView = new EditText(JournalActivity.this);
-                    mMemoDialog = new AlertDialog.Builder(JournalActivity.this).create();
+                    mDetailView = new EditText(RecordActivity.this);
+                    mMemoDialog = new AlertDialog.Builder(RecordActivity.this).create();
                     mDetailView.setText(memo);
                     mMemoDialog.setView(mDetailView);
                     mMemoDialog.setMessage("Edit Memo");
@@ -551,7 +551,7 @@ public class JournalActivity extends AppCompatActivity implements
                     int type = record.getType() + 1;
                     if (type > 2) type = 0;
                     record.setType(type);
-                    DatabaseManager.startActionUpdateRecord(JournalActivity.this, mValuesArray);
+                    DatabaseManager.startActionUpdateRecord(RecordActivity.this, mValuesArray);
                 }
             }
 
@@ -610,14 +610,14 @@ public class JournalActivity extends AppCompatActivity implements
 
                 String textMessage = String.format("On #s, I donated a total of %s to #%s! #%s App",
                         DATE_FORMATTER.format(new Date(time)), CURRENCY_FORMATTER.format(impact), name, getString(R.string.app_name));
-                ViewUtilities.launchShareIntent(JournalActivity.this, textMessage);
+                ViewUtilities.launchShareIntent(RecordActivity.this, textMessage);
             }
 
             /**
              * Defines behavior on click of contact button.
              */
             @Optional @OnClick(R.id.record_contact_button) void viewContacts(View v) {
-                mContactDialog = new AlertDialog.Builder(JournalActivity.this).create();
+                mContactDialog = new AlertDialog.Builder(RecordActivity.this).create();
                 ViewUtilities.ContactDialogLayout alertLayout = ViewUtilities.ContactDialogLayout.getInstance(
                         mContactDialog, mValuesArray[(int) v.getTag()]);
                 mContactDialog.setView(alertLayout);
@@ -643,14 +643,14 @@ public class JournalActivity extends AppCompatActivity implements
                                 return false;
                             }
                             record.setImpact(amountTotal);
-                            DatabaseManager.startActionUpdateRecord(JournalActivity.this, record);
-                            DatabaseManager.startActionTargetRecord(JournalActivity.this, record);
+                            DatabaseManager.startActionUpdateRecord(RecordActivity.this, record);
+                            DatabaseManager.startActionTargetRecord(RecordActivity.this, record);
                             String formattedAmount = CURRENCY_FORMATTER.format(amountTotal);
                             mAmountView.setText(formattedAmount);
                             mAmountView.setContentDescription(getString(R.string.description_donation_text, formattedAmount));
                         }
                         InputMethodManager inputMethodManager =
-                                (InputMethodManager) JournalActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                (InputMethodManager) RecordActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (inputMethodManager == null) return false;
                         inputMethodManager.toggleSoftInput(0, 0);
                         return true;
@@ -694,7 +694,7 @@ public class JournalActivity extends AppCompatActivity implements
                             int position = (int) mDateDialog.getButton(DialogInterface.BUTTON_POSITIVE).getTag();
                             Record record = mValuesArray[position];
                             record.setTime(mTime);
-                            DatabaseManager.startActionUpdateRecord(JournalActivity.this, record);
+                            DatabaseManager.startActionUpdateRecord(RecordActivity.this, record);
                         default:
                     }
                 } else if (dialog == mMemoDialog) {
@@ -707,7 +707,7 @@ public class JournalActivity extends AppCompatActivity implements
                             int position = (int) mMemoDialog.getButton(AlertDialog.BUTTON_POSITIVE).getTag();
                             Record record = mValuesArray[position];
                             record.setMemo(text);
-                            DatabaseManager.startActionUpdateRecord(JournalActivity.this, record);
+                            DatabaseManager.startActionUpdateRecord(RecordActivity.this, record);
                             break;
                     }
 

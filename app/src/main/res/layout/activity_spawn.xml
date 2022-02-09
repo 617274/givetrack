@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".view.IndexActivity">
+    tools:context=".view.SpawnActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/spawn_appbar"
@@ -85,8 +85,8 @@
                     android:layout_height="match_parent"
                     android:background="@color/colorChalk"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:context=".view.IndexActivity"
-                    tools:listitem="@layout/item_index"/>
+                    tools:context=".view.SpawnActivity"
+                    tools:listitem="@layout/item_spawn"/>
 
                 <ProgressBar
                     android:id="@+id/spawn_progress"

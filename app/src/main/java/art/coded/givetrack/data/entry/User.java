@@ -36,8 +36,8 @@ public class User implements Entry, Parcelable, Cloneable {
     private int glanceGraphtype;
     private int glanceInterval;
     private int glanceTheme;
-    private String journalOrder;
-    private String journalSort;
+    private String recordOrder;
+    private String recordSort;
     private long recordStamp; // Time of most recent change to record table
     private boolean indexRanked;
     private long indexAnchor; // Time of most recent fetch count reset
@@ -102,8 +102,8 @@ public class User implements Entry, Parcelable, Cloneable {
         dest.writeString(indexPages);
         dest.writeString(indexRows);
         dest.writeInt(giveReset ? 1 : 0);
-        dest.writeString(journalSort);
-        dest.writeString(journalOrder);
+        dest.writeString(recordSort);
+        dest.writeString(recordOrder);
         dest.writeLong(targetStamp);
         dest.writeLong(recordStamp);
         dest.writeLong(userStamp);
@@ -145,8 +145,8 @@ public class User implements Entry, Parcelable, Cloneable {
         indexPages = source.readString();
         indexRows = source.readString();
         giveReset = source.readInt() == 1;
-        journalSort = source.readString();
-        journalOrder = source.readString();
+        recordSort = source.readString();
+        recordOrder = source.readString();
         targetStamp = source.readLong();
         recordStamp = source.readLong();
         spawnStamp = source.readLong();
@@ -187,8 +187,8 @@ public class User implements Entry, Parcelable, Cloneable {
         this.indexRows = user.indexRows;
         this.giveReset = user.giveReset;
         this.indexRanked = user.indexRanked;
-        this.journalSort = user.journalSort;
-        this.journalOrder = user.journalOrder;
+        this.recordSort = user.recordSort;
+        this.recordOrder = user.recordOrder;
         this.targetStamp = user.targetStamp;
         this.recordStamp = user.recordStamp;
         this.spawnStamp = user.spawnStamp;
@@ -237,8 +237,8 @@ public class User implements Entry, Parcelable, Cloneable {
             String indexRows,
             boolean giveReset,
             boolean indexRanked,
-            String journalSort,
-            String journalOrder,
+            String recordSort,
+            String recordOrder,
             long targetStamp,
             long recordStamp,
             long spawnStamp,
@@ -276,8 +276,8 @@ public class User implements Entry, Parcelable, Cloneable {
         this.indexRows = indexRows;
         this.giveReset = giveReset;
         this.indexRanked = indexRanked;
-        this.journalSort = journalSort;
-        this.journalOrder = journalOrder;
+        this.recordSort = recordSort;
+        this.recordOrder = recordOrder;
         this.targetStamp = targetStamp;
         this.recordStamp = recordStamp;
         this.spawnStamp = spawnStamp;
@@ -350,10 +350,10 @@ public class User implements Entry, Parcelable, Cloneable {
     public void setGiveReset(boolean giveReset) { this.giveReset = giveReset; }
     public boolean getIndexRanked() { return indexRanked; }
     public void setIndexRanked(boolean indexRanked) { this.indexRanked = indexRanked; }
-    public String getJournalSort() { return journalSort; }
-    public void setJournalSort(String journalSort) { this.journalSort = journalSort; }
-    public String getJournalOrder() { return journalOrder; }
-    public void setJournalOrder(String journalOrder) { this.journalOrder = journalOrder; }
+    public String getRecordSort() { return recordSort; }
+    public void setRecordSort(String recordSort) { this.recordSort = recordSort; }
+    public String getRecordOrder() { return recordOrder; }
+    public void setRecordOrder(String recordOrder) { this.recordOrder = recordOrder; }
     public long getTargetStamp() { return targetStamp; }
     public void setTargetStamp(long targetStamp) { this.targetStamp = targetStamp; }
     public long getRecordStamp() { return recordStamp; }
@@ -400,8 +400,8 @@ public class User implements Entry, Parcelable, Cloneable {
         map.put(COLUMN_INDEX_ROWS, indexRows);
         map.put(COLUMN_GIVE_RESET, giveReset);
         map.put(COLUMN_INDEX_RANKED, indexRanked);
-        map.put(COLUMN_JOURNAL_SORT, journalSort);
-        map.put(COLUMN_JOURNAL_ORDER, journalOrder);
+        map.put(COLUMN_RECORD_SORT, recordSort);
+        map.put(COLUMN_RECORD_ORDER, recordOrder);
         map.put(COLUMN_TARGET_STAMP, targetStamp);
         map.put(COLUMN_RECORD_STAMP, recordStamp);
         map.put(COLUMN_SPAWN_STAMP, spawnStamp);
@@ -437,8 +437,8 @@ public class User implements Entry, Parcelable, Cloneable {
         if (map.containsKey(COLUMN_INDEX_PAGES)) indexPages = (String) map.get(COLUMN_INDEX_PAGES);
         if (map.containsKey(COLUMN_INDEX_ROWS)) indexRows = (String) map.get(COLUMN_INDEX_ROWS);
         if (map.containsKey(COLUMN_INDEX_RANKED)) indexRanked = (boolean) map.get(COLUMN_INDEX_RANKED);
-        if (map.containsKey(COLUMN_JOURNAL_SORT)) journalSort = (String) map.get(COLUMN_JOURNAL_SORT);
-        if (map.containsKey(COLUMN_JOURNAL_ORDER)) journalOrder = (String) map.get(COLUMN_JOURNAL_ORDER);
+        if (map.containsKey(COLUMN_RECORD_SORT)) recordSort = (String) map.get(COLUMN_RECORD_SORT);
+        if (map.containsKey(COLUMN_RECORD_ORDER)) recordOrder = (String) map.get(COLUMN_RECORD_ORDER);
         if (map.containsKey(COLUMN_RECORD_STAMP)) recordStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_RECORD_STAMP), Long.class);
         if (map.containsKey(COLUMN_TARGET_STAMP)) targetStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_TARGET_STAMP), Long.class);
         if (map.containsKey(COLUMN_SPAWN_STAMP)) spawnStamp = (long) AppUtilities.preferenceValueToNumerical(map.get(COLUMN_SPAWN_STAMP), Long.class);
@@ -485,8 +485,8 @@ public class User implements Entry, Parcelable, Cloneable {
         values.put(COLUMN_INDEX_ROWS, indexRows);
         values.put(COLUMN_GIVE_RESET, giveReset);
         values.put(COLUMN_INDEX_RANKED, indexRanked);
-        values.put(COLUMN_JOURNAL_SORT, journalSort);
-        values.put(COLUMN_JOURNAL_ORDER, journalOrder);
+        values.put(COLUMN_RECORD_SORT, recordSort);
+        values.put(COLUMN_RECORD_ORDER, recordOrder);
         values.put(COLUMN_TARGET_STAMP, targetStamp);
         values.put(COLUMN_RECORD_STAMP, recordStamp);
         values.put(COLUMN_SPAWN_STAMP, spawnStamp);
@@ -528,8 +528,8 @@ public class User implements Entry, Parcelable, Cloneable {
         indexRows = values.getAsString(COLUMN_INDEX_ROWS);
         giveReset = values.getAsBoolean(COLUMN_GIVE_RESET);
         indexRanked = values.getAsBoolean(COLUMN_INDEX_RANKED);
-        journalSort = values.getAsString(COLUMN_JOURNAL_SORT);
-        journalOrder = values.getAsString(COLUMN_JOURNAL_ORDER);
+        recordSort = values.getAsString(COLUMN_RECORD_SORT);
+        recordOrder = values.getAsString(COLUMN_RECORD_ORDER);
         targetStamp = values.getAsLong(COLUMN_TARGET_STAMP);
         recordStamp = values.getAsLong(COLUMN_RECORD_STAMP);
         spawnStamp = values.getAsLong(COLUMN_SPAWN_STAMP);
@@ -579,8 +579,8 @@ public class User implements Entry, Parcelable, Cloneable {
         user.indexRows = "";
         user.giveReset = false;
         user.indexRanked = true;
-        user.journalSort = "time";
-        user.journalOrder = "DESC";
+        user.recordSort = "time";
+        user.recordOrder = "DESC";
         user.targetStamp = 0; // Resets Target stamps
         user.recordStamp = 0; // Resets Record stamps
         user.spawnStamp = 0; // Resets Spawn stamps

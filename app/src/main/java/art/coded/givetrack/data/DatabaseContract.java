@@ -95,8 +95,8 @@ public final class DatabaseContract {
         public static final String COLUMN_INDEX_ROWS = "indexRows";
         public static final String COLUMN_GIVE_RESET = "giveReset";
         public static final String COLUMN_INDEX_RANKED = "indexRanked";
-        public static final String COLUMN_JOURNAL_SORT = "journalSort";
-        public static final String COLUMN_JOURNAL_ORDER = "journalOrder";
+        public static final String COLUMN_RECORD_SORT = "recordSort";
+        public static final String COLUMN_RECORD_ORDER = "recordOrder";
         public static final String COLUMN_TARGET_STAMP = "targetStamp";
         public static final String COLUMN_RECORD_STAMP = "recordStamp";
         public static final String COLUMN_SPAWN_STAMP = "spawnStamp";

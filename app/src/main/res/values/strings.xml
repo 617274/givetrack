@@ -58,7 +58,7 @@
     <string name="title_activity_home">Home Activity</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_index">Search Results</string>
-    <string name="title_activity_journal">Past Activity</string>
+    <string name="title_activity_record">Past Activity</string>
     <string name="title_charity_detail">Charity Detail</string>
     <string name="title_activity_config">Settings</string>
     <string name="title_activity_reward">Coin Generator</string>
@@ -75,7 +75,7 @@
     <string name="nav_menu_learn">Learn</string>
     <string name="nav_item_index">Search</string>
     <string name="nav_item_reward">Credit</string>
-    <string name="nav_item_journal">History</string>
+    <string name="nav_item_record">History</string>
     <string name="nav_item_settings">Settings</string>
     <string name="nav_item_logout">Logout</string>
     <string name="nav_item_cn">About Charity Navigator API</string>
@@ -165,8 +165,8 @@
     <string name="pref_indexMinrating_key" translatable="false">indexMinrating</string>
     <string name="pref_indexFilter_key" translatable="false">indexFilter</string>
     <string name="pref_indexRanked_key" translatable="false">indexRanked</string>
-    <string name="pref_journalSort_key" translatable="false">journalSort</string>
-    <string name="pref_journalOrder_key" translatable="false">journalOrder</string>
+    <string name="pref_recordSort_key" translatable="false">recordSort</string>
+    <string name="pref_recordOrder_key" translatable="false">recordOrder</string>
     <string name="pref_indexFocus_key" translatable="false">indexFocus</string>
     <string name="pref_userGender_key" translatable="false">userGender</string>
     <string name="pref_userBirthdate_label">Birthdate</string>
@@ -360,12 +360,12 @@
         <item>1</item>
         <item>0</item>
     </string-array>
-    <string-array name="list_preference_sortJournal">
+    <string-array name="list_preference_sortRecord">
         <item>By date</item>
         <item>By amount</item>
         <item>By name</item>
     </string-array>
-    <string-array name="list_preference_sortJournal_values">
+    <string-array name="list_preference_sortRecord_values">
         <item>time</item>
         <item>impact</item>
         <item>name</item>
@@ -378,11 +378,11 @@
         <item>DESC</item>
         <item>ASC</item>
     </string-array>
-    <string-array name="list_preference_orderJournal">
+    <string-array name="list_preference_orderRecord">
         <item>Descending</item>
         <item>Ascending</item>
     </string-array>
-    <string-array name="list_preference_orderJournal_values">
+    <string-array name="list_preference_orderRecord_values">
         <item>DESC</item>
         <item>ASC</item>
     </string-array>

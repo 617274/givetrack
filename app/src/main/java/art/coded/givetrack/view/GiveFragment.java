@@ -509,7 +509,7 @@ public class GiveFragment extends Fragment implements
         }
 
         /**
-         * Reserves the last element in the list to an add button for launching {@link IndexActivity}.
+         * Reserves the last element in the list to an add button for launching {@link SpawnActivity}.
          */
         @Override public int getItemViewType(int position) {
             if (position == getItemCount() - 1) return VIEW_TYPE_BUTTON;
@@ -517,7 +517,7 @@ public class GiveFragment extends Fragment implements
         }
 
         /**
-         * Updates contents of the {@code ViewHolder} to displays movie data at the specified position.
+         * Updates contents of the {@code ViewHolder} to displays charity data at the specified position.
          */
         @Override public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
@@ -535,7 +535,7 @@ public class GiveFragment extends Fragment implements
 
             if (position == getItemCount() - 1 && addButton != null) {
                 addButton.setOnClickListener(clickedView -> {
-                    Intent spawnIntent = new Intent(mContext, IndexActivity.class);
+                    Intent spawnIntent = new Intent(mContext, SpawnActivity.class);
                     mParentActivity.finish();
                     startActivity(spawnIntent);
                 });

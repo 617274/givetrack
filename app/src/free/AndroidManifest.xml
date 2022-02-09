@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".view.IndexActivity"
+            android:name=".view.SpawnActivity"
             android:label="@string/title_activity_index"
             android:parentActivityName=".view.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -40,8 +40,8 @@
         </activity>
 
         <activity
-            android:name=".view.JournalActivity"
-            android:label="@string/title_activity_journal"
+            android:name=".view.RecordActivity"
+            android:label="@string/title_activity_record"
             android:parentActivityName=".view.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

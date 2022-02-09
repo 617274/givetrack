@@ -116,16 +116,16 @@ final class ViewUtilities {
         switch (action) {
             case HomeActivity.ACTION_HOME_INTENT:
                 return ConfigActivity.HomePreferenceFragment.class.getName();
-            case IndexActivity.ACTION_INDEX_INTENT:
+            case SpawnActivity.ACTION_INDEX_INTENT:
                 return ConfigActivity.IndexPreferenceFragment.class.getName();
-            case JournalActivity.ACTION_JOURNAL_INTENT:
-                return ConfigActivity.JournalPreferenceFragment.class.getName();
+            case RecordActivity.ACTION_RECORD_INTENT:
+                return ConfigActivity.RecordPreferenceFragment.class.getName();
             default:
                 throw new IllegalArgumentException(
                         String.format("Action must derive from %s, %s or %s",
                                 HomeActivity.ACTION_HOME_INTENT,
-                                IndexActivity.ACTION_INDEX_INTENT,
-                                JournalActivity.ACTION_JOURNAL_INTENT
+                                SpawnActivity.ACTION_INDEX_INTENT,
+                                RecordActivity.ACTION_RECORD_INTENT
                         ));
         }
     }

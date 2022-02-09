@@ -1,5 +1,5 @@
 package art.coded.givetrack;
 
-public class JournalActivitynstrumentedTest {
+public class RecordActivitynstrumentedTest {
     // TODO: Implement
 }

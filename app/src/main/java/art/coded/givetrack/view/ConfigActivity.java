@@ -120,7 +120,7 @@ public class ConfigActivity
                 || UserPreferenceFragment.class.getName().equals(fragmentName)
                 || IndexPreferenceFragment.class.getName().equals(fragmentName)
                 || HomePreferenceFragment.class.getName().equals(fragmentName)
-                || JournalPreferenceFragment.class.getName().equals(fragmentName)
+                || RecordPreferenceFragment.class.getName().equals(fragmentName)
                 || AdvancedPreferenceFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
@@ -249,13 +249,13 @@ public class ConfigActivity
             String action = getIntent().getAction();
             if (action != null) {
                 switch (action) {
-                    case JournalActivity.ACTION_JOURNAL_INTENT:
+                    case RecordActivity.ACTION_RECORD_INTENT:
                         finish();
-                        startActivity(new Intent(this, JournalActivity.class));
+                        startActivity(new Intent(this, RecordActivity.class));
                         return true;
-                    case IndexActivity.ACTION_INDEX_INTENT:
+                    case SpawnActivity.ACTION_INDEX_INTENT:
                         finish();
-                        startActivity(new Intent(this, IndexActivity.class));
+                        startActivity(new Intent(this, SpawnActivity.class));
                         return true;
                     case HomeActivity.ACTION_HOME_INTENT:
                         finish();
@@ -556,7 +556,7 @@ public class ConfigActivity
          */
         @Override public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_index);
+            addPreferencesFromResource(R.xml.pref_spawn);
             setHasOptionsMenu(true);
             changeSummaries(this);
         }
@@ -638,7 +638,7 @@ public class ConfigActivity
                         e.apply();
                     }
                 }
-                PreferenceManager.setDefaultValues(getActivity(), R.xml.pref_index, true);
+                PreferenceManager.setDefaultValues(getActivity(), R.xml.pref_spawn, true);
                 changeSummaries(this);
                 sUser.fromParameterMap((Map<String, Object>) sp.getAll());
                 DatabaseManager.startActionUpdateUser(getContext(), sUser);
@@ -674,7 +674,7 @@ public class ConfigActivity
                     case AlertDialog.BUTTON_NEGATIVE:
                         DatabaseManager.startActionResetSpawn(getActivity());
                         getActivity().finish();
-                        startActivity(new Intent(getActivity(), IndexActivity.class));
+                        startActivity(new Intent(getActivity(), SpawnActivity.class));
                         break;
                     default:
                 }
@@ -886,7 +886,7 @@ public class ConfigActivity
     /**
      * Fragment bound to preference header for updating target settings.
      */
-    public static class JournalPreferenceFragment extends PreferenceFragment implements
+    public static class RecordPreferenceFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener,
             Preference.OnPreferenceClickListener,
             DialogInterface.OnClickListener {
@@ -898,7 +898,7 @@ public class ConfigActivity
          */
         @Override public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_journal);
+            addPreferencesFromResource(R.xml.pref_record);
             setHasOptionsMenu(true);
             changeSummaries(this);
         }
@@ -908,18 +908,18 @@ public class ConfigActivity
          */
         @Override public void onResume() {
             super.onResume();
-            ListPreference sortPref = (ListPreference) findPreference(getString(R.string.pref_journalSort_key));
+            ListPreference sortPref = (ListPreference) findPreference(getString(R.string.pref_recordSort_key));
             if (sortPref.getValue() == null) {
                 sortPref.setValueIndex(sortPref.getEntries().length - 1);
             }
 
-            ListPreference orderPref = (ListPreference) findPreference(getString(R.string.pref_journalOrder_key));
+            ListPreference orderPref = (ListPreference) findPreference(getString(R.string.pref_recordOrder_key));
             if (orderPref.getValue() == null) {
                 orderPref.setValueIndex(orderPref.getEntries().length - 1);
             }
 
-            handlePreferenceChange(findPreference(getString(R.string.pref_journalSort_key)), this);
-            handlePreferenceChange(findPreference(getString(R.string.pref_journalOrder_key)), this);
+            handlePreferenceChange(findPreference(getString(R.string.pref_recordSort_key)), this);
+            handlePreferenceChange(findPreference(getString(R.string.pref_recordOrder_key)), this);
             handlePreferenceClick(findPreference(getString(R.string.pref_clear_key)), this);
             handlePreferenceClick(findPreference(getString(R.string.pref_show_key)), this);
         }
@@ -976,7 +976,7 @@ public class ConfigActivity
                     case AlertDialog.BUTTON_NEGATIVE:
                         DatabaseManager.startActionResetRecord(getActivity());
                         getActivity().finish();
-                        startActivity(new Intent(getActivity(), JournalActivity.class));
+                        startActivity(new Intent(getActivity(), RecordActivity.class));
                         break;
                     default:
                 }

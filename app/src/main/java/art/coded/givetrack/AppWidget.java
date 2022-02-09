@@ -14,8 +14,8 @@ import android.widget.RemoteViewsService;
 import art.coded.givetrack.data.DatabaseContract;
 import art.coded.givetrack.data.entry.Target;
 import art.coded.givetrack.view.HomeActivity;
-import art.coded.givetrack.view.IndexActivity;
-import art.coded.givetrack.view.JournalActivity;
+import art.coded.givetrack.view.SpawnActivity;
+import art.coded.givetrack.view.RecordActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,11 +45,11 @@ public class AppWidget extends AppWidgetProvider {
         PendingIntent listPendingIntent = PendingIntent.getActivity(context, 0, listIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.widget_list, listPendingIntent);
 
-        Intent spawnIntent = signedIn ? new Intent(context, IndexActivity.class) : new Intent();
+        Intent spawnIntent = signedIn ? new Intent(context, SpawnActivity.class) : new Intent();
         PendingIntent spawnPendingIntent = PendingIntent.getActivity(context, 0, spawnIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_spawn, spawnPendingIntent);
 
-        Intent recordIntent = signedIn ? new Intent(context, JournalActivity.class) : new Intent();
+        Intent recordIntent = signedIn ? new Intent(context, RecordActivity.class) : new Intent();
         PendingIntent recordPendingIntent = PendingIntent.getActivity(context, 0, recordIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.widget_record, recordPendingIntent);
 

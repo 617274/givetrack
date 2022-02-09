@@ -295,7 +295,7 @@ public class RemitActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     /**
-     * Populates {@link JournalActivity} {@link RecyclerView}.
+     * Populates {@link RecordActivity} {@link RecyclerView}.
      */
     class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
@@ -317,7 +317,7 @@ public class RemitActivity extends AppCompatActivity implements LoaderManager.Lo
         }
 
         /**
-         * Updates contents of the {@code ViewHolder} to displays movie data at the specified position.
+         * Updates contents of the {@code ViewHolder} to displays charity data at the specified position.
          */
         @Override
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {

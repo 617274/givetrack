@@ -22,7 +22,7 @@
         android:title="@string/pref_header_index" />
 
     <header
-        android:fragment="art.coded.givetrack.view.ConfigActivity$JournalPreferenceFragment"
+        android:fragment="art.coded.givetrack.view.ConfigActivity$RecordPreferenceFragment"
         android:icon="@drawable/filter_outline"
         android:title="@string/pref_header_record" />
 
