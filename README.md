@@ -17,3 +17,10 @@ This app is made with:
 * [Timber](https://github.com/JakeWharton/timber) for logging
 * [Glide](https://github.com/bumptech/glide) for image caching
 * [Jsoup](https://jsoup.org) for HTML parsing
+
+## Prerequisites
+
+1. Register with [Google Play Services](https://developer.android.com/distribute/play-services/) to generate an API key and config file.
+2. Register with [Google AdMob](https://developers.google.com/ads/) to generate an app and rewarded ad ID.
+3. Register with [Charity Navigator](http://api.charitynavigator.org/) to generate an app ID and key.
+4. Add the above generated IDs, keys and files to your project without exposing them in a public repository.
