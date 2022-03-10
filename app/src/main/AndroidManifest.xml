@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="http"
-                    android:host="github.com"
-                    android:pathPattern="/rjbx/Givetrack" />
+                    android:host="coded.art"
+                    android:pathPattern="/Givetrack" />
             </intent-filter>
         </activity>
 
