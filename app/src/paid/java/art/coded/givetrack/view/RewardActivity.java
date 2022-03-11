@@ -48,7 +48,7 @@ public class RewardActivity extends AppCompatActivity implements
         RewardedVideoAdListener {
 
     private static final NumberFormat CURRENCY_FORMATTER = NumberFormat.getCurrencyInstance();
-    private static final float TEST_REWARD_MULTIPLIER = 20f;
+    private static final float TEST_REWARD_MULTIPLIER = 5f;
     private RewardedVideoAd mRewardedAd;
     private User mUser;
     private int mRewardedAmount;
@@ -185,7 +185,7 @@ public class RewardActivity extends AppCompatActivity implements
         int reward = (int) (rewardItem.getAmount() * TEST_REWARD_MULTIPLIER);
 
         mRewardedAmount += reward; // Converts points to cash amount
-        mRewardedView.setText(String.valueOf(mRewardedAmount));
+        mRewardedView.setText(String.valueOf(mRewardedAmount /* + mUser.getIndexCount() */));
         mRewardedView.setContentDescription(getString(R.string.description_reward_text, CURRENCY_FORMATTER.format(mRewardedAmount)));
 
         mUser.setUserCredit(mRewardedAmount);
@@ -215,7 +215,9 @@ public class RewardActivity extends AppCompatActivity implements
         launchDialog(R.string.error_reward);
 
     }
-    @Override public void onRewardedVideoCompleted() {}
+    @Override public void onRewardedVideoCompleted() {
+        recreate();
+    }
 
     /**
      * Generates an options Menu.
