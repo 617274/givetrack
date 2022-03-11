@@ -71,7 +71,7 @@ public class SpawnActivity extends AppCompatActivity implements
     private static final String STATE_ARRAY = "art.coded.givetrack.ui.state.SPAWN_ARRAY";
     private static final String STATE_LOCK = "art.coded.givetrack.ui.state.LOADER_LOCK";
     private static final String STATE_USER = "art.coded.givetrack.ui.state.ACTIVE_USER";
-    private static final int DAILY_LIMIT = 3;
+    private static final int DAILY_LIMIT = 2;
     private static boolean sDualPane;
     private Spawn[] mValuesArray;
     private ListAdapter mAdapter;
