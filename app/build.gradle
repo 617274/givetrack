@@ -7,8 +7,8 @@ android {
         applicationId "art.coded.givetrack"
         minSdkVersion 24
         targetSdkVersion 31
-        versionCode 72
-        versionName "0.7.2"
+        versionCode 73
+        versionName "0.7.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
@@ -47,10 +47,12 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.browser:browser:1.4.0'
 //    implementation 'com.android.billingclient:billing:3.0.0'
+
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
     implementation 'com.google.android.gms:play-services-ads:19.8.0'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
     implementation 'com.google.android.material:material:1.6.0-alpha03'
+
     implementation platform('com.google.firebase:firebase-bom:29.1.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-core:20.1.0'
@@ -58,6 +60,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
 //    implementation 'com.stripe:stripe-android:9.3.6'
+
     implementation 'org.jsoup:jsoup:1.13.1'
     implementation 'com.jakewharton:butterknife:10.0.0'
     implementation 'com.jakewharton.timber:timber:4.7.1'

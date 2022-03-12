@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 
 ext {
 
-    libraryVersion = '0.7.2'
+    libraryVersion = '0.7.3'
 
     licenseName = 'GNU General Public License, Version 3.0'
     licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0.en.html'
