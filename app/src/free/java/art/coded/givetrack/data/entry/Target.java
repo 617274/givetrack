@@ -2,7 +2,6 @@ package art.coded.givetrack.data.entry;
 
 import android.content.ContentValues;
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import art.coded.givetrack.data.DatabaseContract;
 import art.coded.rateraid.Rateraid;
