@@ -64,7 +64,7 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_RECORD;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
-// TODO: Resolve RecycleView position restore on rotation
+// TODO: Resolve RecycleView position restore and ViewHolder detail propagation on rotation
 /**
  * Presents a list of editable giving records with toggleable detail pane.
  */
