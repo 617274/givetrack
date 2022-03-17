@@ -54,6 +54,7 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
+// TODO: Resolve RecycleView position restore on rotation
 /**
  * Presents a list of entities spawned from a remote data API with toggleable detail pane.
  */

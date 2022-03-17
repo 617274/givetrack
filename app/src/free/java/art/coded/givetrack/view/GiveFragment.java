@@ -64,6 +64,7 @@ import java.util.TimerTask;
 import static art.coded.givetrack.AppUtilities.CURRENCY_FORMATTER;
 import static art.coded.givetrack.AppUtilities.PERCENT_FORMATTER;
 
+// TODO: Resolve RecycleView position restore on rotation
 /**
  * Provides the logic and views for a user activity management screen.
  */
