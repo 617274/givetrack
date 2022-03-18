@@ -1,5 +1,7 @@
 package art.coded.givetrack.view;
 
+import static com.github.mikephil.charting.charts.Chart.LOG_TAG;
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Parcelable;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -111,13 +114,14 @@ public class RecordActivity extends AppCompatActivity implements
         getSupportLoaderManager().initLoader(LOADER_ID_USER, null, this);
 
         if (savedInstanceState != null) {
+            mUser = savedInstanceState.getParcelable(STATE_USER);
             mLock = savedInstanceState.getBoolean(STATE_LOCK);
-            sDualPane = savedInstanceState.getBoolean(STATE_PANE);
             mPanePosition = savedInstanceState.getInt(STATE_POSITION);
+            sDualPane = savedInstanceState.getBoolean(STATE_PANE);
             mAddedName = savedInstanceState.getString(STATE_ADDED);
             mRemovedName = savedInstanceState.getString(STATE_REMOVED);
-            mUser = savedInstanceState.getParcelable(STATE_USER);
             Parcelable[] pRecords = savedInstanceState.getParcelableArray(STATE_ARRAY);
+
             if (pRecords != null) mValuesArray = AppUtilities.getTypedArrayFromParcelables(pRecords, Record.class);
             mInstanceStateRestored = true;
 //            savedInstanceState.clear();
@@ -203,7 +207,7 @@ public class RecordActivity extends AppCompatActivity implements
     @Override public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         if (data == null || (!data.moveToFirst())) return;
         int id = loader.getId();
-      Snackbar sb = Snackbar.make(mToolbar, mSnackbarMessage, Snackbar.LENGTH_LONG);
+        Snackbar sb = Snackbar.make(mToolbar, mSnackbarMessage, Snackbar.LENGTH_LONG);
         sb.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary, null));
         switch (id) {
             case DatabaseContract.LOADER_ID_TARGET:
@@ -220,24 +224,22 @@ public class RecordActivity extends AppCompatActivity implements
             case DatabaseContract.LOADER_ID_RECORD:
                 if (mLock) break;
                 mValuesArray = new Record[data.getCount()];
-                if (!mInstanceStateRestored) {
-                    if (data.moveToFirst()) {
-                        int i = 0;
-                        do {
-                            Record record = new Record();
-                            AppUtilities.cursorRowToEntry(data, record);
-                            mValuesArray[i++] = record;
-                        } while (data.moveToNext());
-                        mAdapter.swapValues(mValuesArray);
-                    }
-                } else mInstanceStateRestored = false;
+//                if (!mInstanceStateRestored) {
+                    int i = 0;
+                    do {
+                        Record record = Record.getDefault();
+                        AppUtilities.cursorRowToEntry(data, record);
+                        mValuesArray[i++] = record;
+                    } while (data.moveToNext());
+                    mAdapter.swapValues(mValuesArray);
+//                } else mInstanceStateRestored = false;
                 if (sDualPane) {
                     Bundle bundle = new Bundle();
                     bundle.putParcelable(DetailFragment.ARG_ITEM_COMPANY, mValuesArray[mPanePosition]);
                     showDualPane(bundle);
                 }
-                if (mSnackbarMessage == null || mSnackbarMessage.isEmpty()) mSnackbarMessage = getString(R.string.message_record_refresh);
-                sb.setText(mSnackbarMessage).show();
+//                if (mSnackbarMessage == null || mSnackbarMessage.isEmpty()) mSnackbarMessage = getString(R.string.message_record_refresh);
+//                sb.setText(mSnackbarMessage).show();
                 break;
             case DatabaseContract.LOADER_ID_USER:
                 if (data.moveToFirst()) {
@@ -254,7 +256,6 @@ public class RecordActivity extends AppCompatActivity implements
                             mUser = user;
                             if (mValuesArray == null || mInstanceStateRestored) getSupportLoaderManager().initLoader(LOADER_ID_RECORD, null, this);
                             if ((mAddedName == null && mRemovedName == null) || mInstanceStateRestored) getSupportLoaderManager().initLoader(LOADER_ID_TARGET, null, this);
-                            mInstanceStateRestored = false;
                             break;
                         }
                     } while (data.moveToNext());
@@ -268,7 +269,9 @@ public class RecordActivity extends AppCompatActivity implements
     /**
      * Tells the application to remove any stored references to the {@link Loader} data.
      */
-    @Override public void onLoaderReset(@NonNull Loader<Cursor> loader) { mAdapter.swapValues(null); }
+    @Override public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        mAdapter.swapValues(null);
+    }
 
     /**
      * Indicates whether the MasterDetailFlow is in dual pane mode.
@@ -279,7 +282,6 @@ public class RecordActivity extends AppCompatActivity implements
      * Presents the list of items and item details side-by-side using two vertical panes.
      */
     @Override public void showDualPane(@NonNull Bundle args) {
-
         sDualPane = true;
         if (mDetailFragment == null) {
             mDetailFragment = DetailFragment.newInstance(args);
@@ -297,7 +299,6 @@ public class RecordActivity extends AppCompatActivity implements
      * Presents the list of items in a single vertical pane, hiding the item details.
      */
     @Override public void showSinglePane() {
-
         sDualPane = false;
         if (mDetailFragment != null) getSupportFragmentManager().beginTransaction().remove(mDetailFragment);
         mDetailFragment = null;
@@ -432,6 +433,7 @@ public class RecordActivity extends AppCompatActivity implements
 
             Record values = mValuesArray[position];
             if (values == null) return;
+
             int type = values.getType();
             switch (type) {
                 case 0: holder.mTypeView.setText("M"); break;
@@ -446,7 +448,7 @@ public class RecordActivity extends AppCompatActivity implements
             final long time = values.getTime();
 
             if (name.length() > 35) { name = name.substring(0, 35);
-            name = name.substring(0, name.lastIndexOf(" ")).concat("..."); }
+                name = name.substring(0, name.lastIndexOf(" ")).concat("..."); }
 
             holder.mNameView.setText(name);
             holder.mIdView.setText(String.format("EIN: %s", ein));
@@ -456,7 +458,7 @@ public class RecordActivity extends AppCompatActivity implements
             holder.mAmountView.setFocusable(!isDualPane());
             holder.mAmountView.setClickable(true);
             if (impact > 99999f &&
-                getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 float scaleFactor = .9f;
                 double impactDividend = impact;
                 while (impactDividend > 999999) {
