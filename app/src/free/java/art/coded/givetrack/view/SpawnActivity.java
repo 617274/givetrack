@@ -116,7 +116,7 @@ public class SpawnActivity extends AppCompatActivity implements
             Parcelable[] pSpawns = savedInstanceState.getParcelableArray(STATE_ARRAY);
             if (pSpawns != null) mValuesArray = AppUtilities.getTypedArrayFromParcelables(pSpawns, Spawn.class);
             mInstanceStateRestored = true;
-            savedInstanceState.clear();
+//            savedInstanceState.clear();
         } else sDualPane = mDetailContainer.getVisibility() == View.VISIBLE;
 
         setSupportActionBar(mToolbar);

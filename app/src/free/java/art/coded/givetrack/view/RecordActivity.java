@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -64,7 +65,7 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_RECORD;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
-// TODO: Resolve RecycleView position restore on rotation and ViewHolder detail propagation on double rotation
+// TODO: Resolve ViewHolder detail propagation on double rotation
 /**
  * Presents a list of editable giving records with toggleable detail pane.
  */
@@ -119,7 +120,7 @@ public class RecordActivity extends AppCompatActivity implements
             Parcelable[] pRecords = savedInstanceState.getParcelableArray(STATE_ARRAY);
             if (pRecords != null) mValuesArray = AppUtilities.getTypedArrayFromParcelables(pRecords, Record.class);
             mInstanceStateRestored = true;
-            savedInstanceState.clear();
+//            savedInstanceState.clear();
         } else sDualPane = mDetailContainer.getVisibility() == View.VISIBLE;
 
         setSupportActionBar(mToolbar);
