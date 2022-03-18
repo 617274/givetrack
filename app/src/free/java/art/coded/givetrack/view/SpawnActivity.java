@@ -54,7 +54,6 @@ import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_SPAWN;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_TARGET;
 import static art.coded.givetrack.data.DatabaseContract.LOADER_ID_USER;
 
-// TODO: Resolve RecycleView position restore on rotation
 /**
  * Presents a list of entities spawned from a remote data API with toggleable detail pane.
  */
@@ -223,7 +222,7 @@ public class SpawnActivity extends AppCompatActivity implements
                 mSpawnProgress.setVisibility(View.GONE);
                 mFab.setVisibility(View.VISIBLE);
                 mValuesArray = new Spawn[data.getCount()];
-                if (!mInstanceStateRestored) {
+//                if (!mInstanceStateRestored) {
                     int i = 0;
                     do {
                         Spawn spawn = Spawn.getDefault();
@@ -231,7 +230,7 @@ public class SpawnActivity extends AppCompatActivity implements
                         mValuesArray[i++] = spawn;
                     } while (data.moveToNext());
                     mAdapter.swapValues(mValuesArray);
-                } else mInstanceStateRestored = false;
+//                } else mInstanceStateRestored = false;
                 if (mFetching) {
                     if (isDualPane()) showSinglePane();
                     mSnackbarMessage = getString(R.string.message_spawn_refresh, mUser.getIndexCount() + mUser.getUserCredit());
