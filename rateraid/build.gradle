@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 ext {
 
-    libraryVersion = '0.7.3'
+    libraryVersion = '0.7.4'
 
     licenseName = 'GNU General Public License, Version 3.0'
     licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0.en.html'

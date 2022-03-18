@@ -7,8 +7,8 @@ android {
         applicationId "art.coded.givetrack"
         minSdkVersion 24
         targetSdkVersion 31
-        versionCode 73
-        versionName "0.7.3"
+        versionCode 74
+        versionName "0.7.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
