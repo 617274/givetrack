@@ -1,6 +1,6 @@
 ﻿# Givetrack
 
-Users can record and reference the value of their charitable contributions (monetary consideration, in-kind goods, volunteer service) to specific charities.
+An app for searching and saving charities, then posting, organizing and visualizing records from charitable contributions (monetary consideration, in-kind goods, volunteer service).
 
 Webpage: https://coded.art/givetrack
 
